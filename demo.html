@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="app" class="max-w-sm rounded overflow-hidden shadow-lg">
+            <div class="flex">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker leading-tight focus:outline-none focus:shadow-outline" v-model="url" v-bind:placeholder="url">
+                <button class="bg-black hover:bg-grey-dark text-white font-medium py-2 px-4" v-on:click="getImage()">Get Screenshot</button>
+            </div>
+            <div class="relative">
+                <img v-if="loading" src="loading.gif" alt="">
+                <img v-else-if="!loaded && !loading" src="initial-img.png" alt="">
+                <img v-else-if="loaded" v-bind:src="result" alt="">
+                <p class="absolute pin-x pin-b w-full text-center text-lg font-sans font-medium text-white p-2" v-if="loading">Getting the Screenshot! Hang on!</p>        
+            </div>    
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>

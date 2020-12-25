@@ -1,0 +1,73 @@
+{
+    "name": "GetScreenshot by Rasterwise",
+    "description": "GetScreenshot by Rasterwise is a powerful programmable API that allows you to do screenshot operations at scale and for less than the existing solutions.",
+    "image": "https://getscreenshot.rasterwise.com/images/HeroImage7.png",
+    "tags": [
+      "application programming interface",
+      "API",
+      "screenshots",
+      "web screenshots"
+    ],
+    "created": "2019-09-08",
+    "modified": "2019-09-08",
+    "url": "https://getscreenshot.rasterwise.com/api.json",
+    "SpecificationVersion": "0.14",
+    "apis": [
+      {
+        "name": "get-screenshot",
+        "description": "Capture Web Screenshots Programmatically and at Scale.",
+        "image": "https://getscreenshot.rasterwise.com/images/HeroImage7.png",
+        "humanURL": "https://getscreenshot.rasterwise.com/",
+        "baseURL": "https://api.rasterwise.com/v1/get-screenshot",
+        "tags": [
+          "blog",
+          "industry",
+          "",
+          "new",
+          "API",
+          "Application Programming Interface"
+        ],
+        "properties": [
+	        {
+	          "type": "X-signup",
+	          "url": "https://apievangelist.3scale.net/"
+	        },
+	        {
+	          "type": "Swagger",
+	          "url": "http://api.apievangelist.com/definitions/APIs"
+	        },
+	        {
+	          "type": "X-blog",
+	          "url": "http://developer.apievangelist.com/blog/"
+	        },
+	        {
+	          "type": "X-apicommonsmanifest",
+	          "url": "https://raw.githubusercontent.com/kinlane/api-api/master/api-commons-manifest.json"
+	        }
+	    ],
+        "contact": [
+	        {
+	          "FN": "Support at Rasterwise",
+	          "email": "support@rasterwise.com"
+	        }
+	      ]
+      }
+    ],
+    "include": [
+	    {
+	      "name": "GetScreenshot General Information",
+	      "url": "https://getscreenshot.rasterwise.com/api.json"
+	    },
+	    {
+	      "name": "Documentation",
+	      "url": "https://rasterwise.gitbook.io/docs/"
+	    }
+	],
+    "maintainers": [
+	    {
+	      "FN": "Juan J. Ramirez",
+	      "X-twitter": "whoisjuan",
+	      "email": "support@rasterwise.com"
+	    }
+	]
+  }
