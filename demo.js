@@ -19,7 +19,7 @@ var app = new Vue({
       }
       this.loading = true;    
       axios
-        .get('https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/get-screenshot-demo?url='+this.url+'&height=1280', { crossdomain: true })  
+        .get(' https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/get-screenshot-demo?url='+this.url+'&height=1280', { crossdomain: true })  
         .then(response => {
             this.result = response.data.screenshotImage;
       })
