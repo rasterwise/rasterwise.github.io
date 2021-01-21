@@ -21,7 +21,7 @@ h2 {
 
 h3 {
   margin: 10px 0px 1px;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 21px;
   line-height: 30px;
   font-weight: 400;
@@ -36,7 +36,7 @@ h4 {
 
 h5 {
   margin: 10px 0px;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
   font-weight: 700;
 }
@@ -53,7 +53,7 @@ p {
   margin-bottom: 26px;
   font-family: 'Varela Round', sans-serif;
   color: #848999;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .button {
@@ -65,9 +65,9 @@ p {
   background-color: #801336;
   -webkit-transition: background-color 300ms ease;
   transition: background-color 300ms ease;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #fff;
-  font-size: 14px;
+  font-size: 16px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
@@ -150,7 +150,7 @@ p {
 .company {
   margin-top: 11px;
   float: left;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #fff;
   font-size: 28px;
   font-weight: 500;
@@ -161,9 +161,9 @@ p {
   margin-left: 11px;
   -webkit-transition: color 300ms ease, background-color 300ms ease;
   transition: color 300ms ease, background-color 300ms ease;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: hsla(0, 0%, 100%, .81);
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -173,7 +173,7 @@ p {
 }
 
 .nav-link.sign-up {
-  padding: 10px 20px;
+  padding: 10px;
   border-radius: 5px;
   background-color: #ee4540;
   -webkit-transition: background-color 300ms ease;
@@ -196,29 +196,32 @@ p {
 }
 
 .hero-heading {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #fff;
-  font-size: 38px;
-  font-weight: 600;
+  font-size: 50px;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .hero-subhead {
-  font-family: 'Open Sans', sans-serif;
-  color: #a3a8b6;
-  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: #c9c9c9;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .section-title {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #000;
-  font-size: 31px;
+  font-size: 36px;
+  margin-bottom: 10px;
   font-weight: 600;
   text-align: center;
 }
 
 .section-subtitle {
   margin-bottom: 43px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #848999;
   text-align: center;
 }
@@ -257,7 +260,7 @@ p {
   padding-top: 10px;
   border-radius: 50px;
   background-color: #363b48;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #fff;
   font-size: 20px;
 }
@@ -320,7 +323,7 @@ p {
 .footer-text {
   display: inline-block;
   margin-top: 11px;
-  font-family: Montserrat, sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #7d8391;
   font-size: 15px;
 }
@@ -415,110 +418,110 @@ p {
 }
 
 .heading-2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #000;
 }
 
 .heading-3 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #000;
 }
 
 .heading-4 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #000;
 }
 
 .paragraph {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #848999;
   text-align: center;
 }
 
 .paragraph-2 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #848999;
 }
 
 .paragraph-3 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #848999;
 }
 
 .heading-5 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .heading-6 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .heading-7 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .heading-8 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .heading-9 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .heading-10 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .os-heading {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-4 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-5 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-6 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-7 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-8 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-9 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-10 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-11 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-12 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-13 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-14 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .paragraph-15 {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .body {
@@ -648,10 +651,7 @@ p {
     margin-bottom: 23px;
     text-align: center;
   }
-  .hero-heading {
-    font-size: 28px;
-    line-height: 34px;
-  }
+
   .grey-icon {
     margin-top: 28px;
   }
