@@ -1,0 +1,13 @@
+{
+  "name": "RasterwiseGScreenshot-Website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:rasterwise/getscreenshot-website.git",
+  "author": "Juan J. Ramirez <jjramirez.u@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.3.1",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.7"
+  }
+}
