@@ -98,7 +98,7 @@
                 success: function (data) {
                     // Redirect
                     button.val("Encryption Finished")
-                    $('#en-in').val(data.encryptedInstruction)
+                    $('#en-in').val(encodeURIComponent(data.encryptedInstruction))
                 },
                 error: function (err) {
                     // show an error message
