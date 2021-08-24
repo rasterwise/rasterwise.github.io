@@ -1,7 +1,7 @@
 {
     "name": "GetScreenshot by Rasterwise",
     "description": "GetScreenshot by Rasterwise is a powerful programmable API that allows you to do screenshot operations at scale and for less than the existing solutions.",
-    "image": "https://getscreenshotapi.com/images/HeroImage7.png",
+    "image": "https://www.getscreenshotapi.com/images/HeroImage7.png",
     "tags": [
       "application programming interface",
       "API",
@@ -10,14 +10,14 @@
     ],
     "created": "2019-09-08",
     "modified": "2019-09-08",
-    "url": "https://getscreenshotapi.com/api.json",
+    "url": "https://www.getscreenshotapi.com/api.json",
     "SpecificationVersion": "0.14",
     "apis": [
       {
         "name": "get-screenshot",
         "description": "Capture Web Screenshots Programmatically and at Scale.",
-        "image": "https://getscreenshotapi.com/images/HeroImage7.png",
-        "humanURL": "https://getscreenshotapi.com/",
+        "image": "https://www.getscreenshotapi.com/images/HeroImage7.png",
+        "humanURL": "https://www.getscreenshotapi.com/",
         "baseURL": "https://api.rasterwise.com/v1/get-screenshot",
         "tags": [
           "blog",
@@ -56,7 +56,7 @@
     "include": [
 	    {
 	      "name": "GetScreenshot General Information",
-	      "url": "https://getscreenshotapi.com/api.json"
+	      "url": "https://www.getscreenshotapi.com/api.json"
 	    },
 	    {
 	      "name": "Documentation",

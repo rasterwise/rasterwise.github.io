@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <title>Account | GetScreenshot - Affordable Screenshot API</title>
+    <title>Zapier Enctrypted Instruction | GetScreenshot - Affordable Screenshot API</title>
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.getscreenshotapi.com/">
@@ -30,9 +30,9 @@
     </style>
 
     <!-- Javascript Stuff -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
     <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
     <script type="text/javascript">
         ! function (o, c) {
@@ -42,7 +42,6 @@
                 .className += t + "touch")
         }(window, document);
     </script>
-    <script src="https://js.chargebee.com/v2/chargebee.js" data-cb-site="rasterwise"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135545408-1"></script>
     <script>
@@ -66,60 +65,41 @@
             d.getElementsByTagName("head")[0].appendChild(s);
         })();
     </script>
-    <!-- Facebook Pixel Code -->
-    <script>
-        ! function (f, b, e, v, n, t, s) {
-            if (f.fbq) return;
-            n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n;
-            n.push = n;
-            n.loaded = !0;
-            n.version = '2.0';
-            n.queue = [];
-            t = b.createElement(e);
-            t.async = !0;
-            t.src = v;
-            s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '428865544931630');
-        fbq('track', 'PageView');
-    </script>
+
     <script>
         function submitToAPI(e) {
             e.preventDefault();
-            if ($("#email-input").val() == "") {
-                alert("Please enter your account email address");
+            if ($("#login-url").val() == "" || $("#email").val() == "" || $("#password").val() == "" || $("#css-username").val() == "" || $("#css-password").val() == "" )   {
+                alert("Please enter all required information");
                 return;
             }
-            var emailCust = $("#email-input").val();
-            var button = $(".button-bottom");
 
+            var login = $("#login-url").val();
+            var email = $("#email").val();
+            var password = $("#password").val();
+            var cssUsername = $("#css-username").val();
+            var cssPassword = $("#css-password").val();        
+            
+            var button = $("#button1");
             button.val("Please wait...")
 
             var data = {
-                email: emailCust
+                instruction: `${login},${email},${password},${cssUsername},${cssPassword}`
             };
 
             var stringifiedData = JSON.stringify(data);
 
             $.ajax({
-                type: "POST",
-                url: "https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/recover-api",
+                type: "GET",
+                url: "https://us-west3-waveguide-189221.cloudfunctions.net/simple-encrypt",
                 dataType: "json",
-                crossDomain: "true",
-                contentType: "application/json; charset=utf-8",
+                crossDomain: true,
                 data: stringifiedData,
 
-
-                success: function () {
+                success: function (data) {
                     // Redirect
-                    button.val("Verification Finished")
-                    window.location.href = 'https://www.getscreenshotapi.com/account-success';
+                    button.val("Encryption Finished")
+                    $('#en-in').val(data.encryptedInstruction)
                 },
                 error: function (err) {
                     // show an error message
@@ -128,6 +108,11 @@
                 }
             });
 
+        }
+
+        function copyValue() {
+            new ClipboardJS('#copy');
+            $('#copy').text("Copied!");
         }
     </script>
     <noscript><img height="1" width="1" style="display:none"
@@ -189,45 +174,79 @@
 
     <div class="flex flex-col items-center w-50 mt-8">
         <!-- Account Login -->
-        <div class="bg-white shadow sm:rounded-lg">
-            <div class="px-4 py-5 sm:p-6">
-                <h3 class="text-lg leading-6 font-medium text-gray-900">
-                    Manage Subscription
-                </h3>
-                <div class="mt-2 max-w-xl text-sm text-gray-500">
-                    <p>
-                        To manage your subscription, change payment methods, change plans or cancel
-                        please login below into our subscription console.
-                    </p>
-                </div>
-                <div class="mt-5">
-                    <button data-cb-type="portal"  type="button"
-                        class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-gray-800 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm">
-                        Sign Into Subscription Console
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- Account Login -->
         <div class="bg-white shadow sm:rounded-lg mt-8">
             <div class="px-4 py-5 sm:p-6">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">
-                    Recover API Key
+                    Generate Encrypted Bypass Login (For Zapier)
                 </h3>
                 <div class="mt-2 max-w-xl text-sm text-gray-500">
                     <p>
-                        If you lost your API Key and want to recover it, simply enter the associated
-                        email address below and your API key will be re-sent.
+                        If you are a Zapier user you may not be entirely sure on how to form an encrypted bypass instruction. Don’t worry forming an instruction that can be used in the context of Zapier is quite simple.
+                        <br>
+                        <br>
+                        If you need to bypass a login through Zapier you need to provide the following information:
+                        <br>
+                        <br>
+                        -Login Page URL
+                        <br>
+                        -Username (or email) needed to bypass the login.
+                        <br>
+                        -Password needed to bypass the login.
+                        <br>
+                        -Username Field CSS Selector
+                        <br>
+                        -Password CSS Selector
+                        <br>
+                        <br>
+                        This will result in an instruction that looks similar to the following: https://example.com/login,jj@example.com,24h3dnfbnkjbnf,input#user,input#password.
+                        <br>
+                        <br>
+                        Although the first three values (login url, username and password) are quite straight-forward you might not know what’s a CSS selector and how to get it. Fortunately CSS selectors are quite simple. CSS Selectors are identifiers that point to an element in a website UI. In this case you need to tell GetScreenshot the fields in which to enter the username and password you provided in the first two fields.
+                        <br><br>
+                        To obtain the CSS selectors you just need to do a small operation in your browser. Here is a quick YouTube video that explains how to do it: <a class="text-blue-500" href="https://www.youtube.com/watch?v=GMk7ZLuo6Po" target="_blank">How to Get CSS Selector</a> 
+                        <br><br>
+                        When copying the CSS selector of the username field and password field, make sure you’re actually copying the selector of the actual form field. Most likely this would be a input element in both cases.
+                        <br><br>
+                        If you have any questions please reach out to support@rasterwise.com
                     </p>
                 </div>
                 <div class="mt-5">
                     <form id="email-form" name="email-form" data-name="Email Form" method="post"
-                        redirect="/account-success" data-redirect="/account-success" class="form"><input
-                            id="email-input" type="email" class="w-72 border-2 h-10 rounded" maxlength="256" name="email-2"
-                            data-name="Email 2" placeholder="&nbsp;Enter your email address" id="email-2" required=""><input
-                            onClick="submitToAPI(event)" type="submit" value="Recover API Key"
-                            data-wait="Please wait..." class="ml-3 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-gray-800 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"></form>
+                        redirect="/account-success" data-redirect="/account-success" class="form">
+                        <div class="flex flex-col items-start">
+                            <input
+                                id="login-url" type="text" class="w-72 mb-5 border-2 h-10 rounded" maxlength="256" name="email-2"
+                                data-name="login-url" placeholder="&nbsp;Enter login url to bypass" required=""
+                            >
+                            <input
+                                id="email" type="text" class="w-72 mb-5 border-2 h-10 rounded" maxlength="256" name="email-2"
+                                data-name="email" placeholder="&nbsp;Enter bypass email address or username" required=""
+                            >
+                            <input
+                                id="password" type="text" class="w-72 mb-5 border-2 h-10 rounded" maxlength="256" name="password"
+                                data-name="password" placeholder="&nbsp;Enter bypass password" required=""
+                            >
+                            <input
+                                id="css-username" type="text" class="w-72 mb-5 border-2 h-10 rounded" maxlength="256" name="password"
+                                data-name="css-username" placeholder="&nbsp;Enter CSS username selector" required=""
+                            >
+                            <input
+                                id="css-password" type="text" class="w-72 mb-5 border-2 h-10 rounded" maxlength="256" name="password"
+                                data-name="css-password" placeholder="&nbsp;Enter CSS password selector" required=""
+                            >
+                            <input
+                                id="button1" onClick="submitToAPI(event)" type="submit" value="Generate Encrypted Instruction"
+                                data-wait="Please wait..." class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-gray-800 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                            >
+                        </div>
+                        <div class="mt-5">
+                            <hr>
+                            <p class="mt-5 font-semibold text-gray-700">Encrypted Instruction: </p>
+                            <input id="en-in" type="text" class="w-72 mb-5 border-2 h-10 rounded mt-2">
+                            <a onClick="copyValue()" id="copy" data-clipboard-target="#en-in" class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-gray-800 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                            >Copy Value</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
