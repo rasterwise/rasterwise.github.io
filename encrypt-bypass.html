@@ -91,7 +91,7 @@
 
             $.ajax({
                 type: "GET",
-                url: `https://us-west3-waveguide-189221.cloudfunctions.net/simple-encrypt?instruction=${data.instruction}`,
+                url: `https://us-west3-waveguide-189221.cloudfunctions.net/simple-encrypt?instruction=${encodeURIComponent(data.instruction)}`,
                 dataType: "json",
                 crossDomain: true,
 
