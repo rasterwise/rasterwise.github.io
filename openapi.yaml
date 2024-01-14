@@ -1,0 +1,156 @@
+openapi: 3.0.0
+info:
+  title: Rasterwise GetScreenshot API
+  version: 1.0.0
+  description: API for capturing screenshots of web pages.
+servers:
+  - url: https://api.rasterwise.com/v1
+paths:
+  /get-screenshot:
+    get:
+      summary: Capture a screenshot of a web page.
+      parameters:
+        - name: apikey
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Your secret API Key.
+        - name: url
+          in: query
+          required: true
+          schema:
+            type: string
+          description: URL of the website/page to screenshot.
+        - name: format
+          in: query
+          schema:
+            type: string
+            default: "png"
+          description: The file type/format for the capture. Can be png or jpeg.
+        - name: pdf
+          in: query
+          schema:
+            type: string
+            default: "false"
+          description: Generate a PDF instead of an image if set to true.
+        - name: urlasfilename
+          in: query
+          schema:
+            type: boolean
+            default: false
+          description: Include the target URL in the screenshot filename.
+        - name: height
+          in: query
+          schema:
+            type: number
+            default: 800
+          description: Height in pixels of the viewport for the screenshot.
+        - name: width
+          in: query
+          schema:
+            type: number
+            default: 1280
+          description: Width in pixels of the viewport for the screenshot.
+        - name: fullpage
+          in: query
+          schema:
+            type: boolean
+            default: false
+          description: Capture the full height of the website.
+        - name: preset
+          in: query
+          schema:
+            type: string
+          description: Preset device or display resolution for the screenshot.
+        - name: devicefactor
+          in: query
+          schema:
+            type: number
+            default: 1
+          description: Device scale factor for the screenshot.
+        - name: noheight
+          in: query
+          schema:
+            type: boolean
+            default: false
+          description: Allow fullpage parameter to overwrite preset height.
+        - name: element
+          in: query
+          schema:
+            type: string
+          description: CSS selector for targeting specific DOM elements.
+        - name: highlight
+          in: query
+          schema:
+            type: string
+          description: Highlight a custom word or phrase on the website.
+        - name: customjs
+          in: query
+          schema:
+            type: string
+          description: Custom JS to inject before the capture.
+        - name: customcss
+          in: query
+          schema:
+            type: string
+          description: Custom CSS to inject before the capture.
+        - name: hidemsg
+          in: query
+          schema:
+            type: boolean
+            default: false
+          description: Hide chat and customer support clients.
+        - name: hidecookie
+          in: query
+          schema:
+            type: boolean
+            default: false
+          description: Hide cookie disclaimers on the page.
+        - name: hideelement
+          in: query
+          schema:
+            type: string
+          description: CSS selector for hiding specific page elements.
+        - name: forcetr
+          in: query
+          schema:
+            type: boolean
+            default: false
+          description: Force website background to be transparent.
+        - name: click
+          in: query
+          schema:
+            type: string
+          description: Dispatch a click to coordinates or a DOM element.
+        - name: cookie
+          in: query
+          schema:
+            type: string
+          description: Set a cookie with key and value.
+        - name: email
+          in: query
+          schema:
+            type: string
+          description: Email address to send the captured image and details.
+        - name: webhook
+          in: query
+          schema:
+            type: string
+          description: Endpoint URL to receive a POST request with the capture response.
+        - name: strategy
+          in: query
+          schema:
+            type: number
+          description: Alternative rendering strategies for the screenshot.
+        - name: timewait
+          in: query
+          schema:
+            type: number
+            default: 2000
+          description: Extra time wait in ms before taking the screenshot.
+      responses:
+        "200":
+          description: A successful response with screenshot data.
+        "401":
+          description: Unauthorized access due to missing or invalid API key.
