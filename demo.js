@@ -1,36 +1,44 @@
 var app = new Vue({
-  el: '#app',
-  data () {
-    return { 
-        url: 'https://www.apple.com',
-        result: null, 
-        loading: false,
-        loaded: false
+  el: "#app",
+  data() {
+    return {
+      protocol: "https://",
+      url: "www.apple.com",
+      result: null,
+      loading: false,
+      loaded: false,
     };
   },
 
   methods: {
-    getImage(){
-      var passedUrl = this.url
-      var httpBool = passedUrl.includes("https://") || passedUrl.includes("http://"); 
-      if(httpBool == false) {
-        alert("Sorry. The URL needs a protocol (http:// or https://). Please add a protocol to the URL you're passing.");
-        return;
+    getImage() {
+      let fullUrl = this.url;
+      if (!fullUrl.includes("http://") && !fullUrl.includes("https://")) {
+        fullUrl = this.protocol + this.url;
+      } else {
+        this.protocol = fullUrl.startsWith("https://") ? "https://" : "http://";
+        this.url = fullUrl.replace(this.protocol, "");
       }
-      this.loading = true;    
+
+      this.loading = true;
       axios
-        .get(' https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/get-screenshot-demo?url='+this.url+'&height=1280', { crossdomain: true })  
-        .then(response => {
-            this.result = response.data.screenshotImage;
-      })
-      .catch(error => {
-        console.log(error)
-        this.errored = true;
-      })
-      .finally(() => {
+        .get(
+          "https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/get-screenshot-demo?url=" +
+            fullUrl +
+            "&height=1280",
+          { crossdomain: true }
+        )
+        .then((response) => {
+          this.result = response.data.screenshotImage;
+        })
+        .catch((error) => {
+          console.log(error);
+          this.errored = true;
+        })
+        .finally(() => {
           this.loading = false;
-          this.loaded = true;  
-       })
+          this.loaded = true;
+        });
     },
   },
-})
+});
