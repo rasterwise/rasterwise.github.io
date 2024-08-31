@@ -29,6 +29,7 @@ var app = new Vue({
       this.waiting = true;
       this.aiAnalysis = null;
 
+      // This is a protected endpoint behind API Gateway.
       axios
         .get(
           "https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/get-screenshot-demo?url=" +
