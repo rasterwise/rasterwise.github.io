@@ -4,8 +4,7 @@ var app = new Vue({
     return {
       protocol: "https://",
       url: "www.apple.com",
-      aiPrompt: "What's on this page?", // Pre-populate with the desired text
-      result: null,
+      aiPrompt: "What's on this page?",
       aiAnalysis: null,
       loading: false,
       loaded: false,
