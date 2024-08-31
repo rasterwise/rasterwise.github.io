@@ -31,7 +31,7 @@ var app = new Vue({
 
       axios
         .get(
-          "https://us-west3-waveguide-189221.cloudfunctions.net/getscreenshot_demo?url=" +
+          "https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/get-screenshot-demo?url=" +
             fullUrl +
             "&height=1280&aiprompt=" +
             encodeURIComponent(this.aiPrompt),
