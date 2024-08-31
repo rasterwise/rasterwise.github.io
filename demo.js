@@ -12,6 +12,11 @@ var app = new Vue({
       waiting: false,
       waitMessage:
         "Please wait while we capture the screenshot and analyze it...",
+      ep: [
+        "aHR0cHM6Ly8wbGtkeWg1NzJkLmV4ZWN1dGUtYXBpLnVzLXdlc3QtMi5hbWF6b25hd3MuY29tL3B1YmxpYy9nZXQtc2NyZWVuc2hvdC1kZW1v",
+        "?url=",
+        "&height=1280&aiprompt=",
+      ],
     };
   },
 
@@ -29,15 +34,12 @@ var app = new Vue({
       this.waiting = true;
       this.aiAnalysis = null;
 
-      // This is a protected endpoint behind API Gateway.
+      const de = atob(this.ep[0]) + this.ep[1] + fullUrl + this.ep[2];
+
       axios
-        .get(
-          "https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/get-screenshot-demo?url=" +
-            fullUrl +
-            "&height=1280&aiprompt=" +
-            encodeURIComponent(this.aiPrompt),
-          { crossdomain: true }
-        )
+        .get(de + encodeURIComponent(this.aiPrompt), {
+          crossdomain: true,
+        })
         .then((response) => {
           this.result = response.data.screenshotImage;
           this.aiAnalysis = response.data.aiAnalysis;
