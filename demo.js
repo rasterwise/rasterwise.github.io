@@ -38,6 +38,9 @@ var app = new Vue({
       axios
         .get(de + encodeURIComponent(this.aiPrompt), {
           crossdomain: true,
+          headers: {
+            Origin: window.location.origin,
+          },
         })
         .then((response) => {
           this.result = response.data.screenshotImage;
