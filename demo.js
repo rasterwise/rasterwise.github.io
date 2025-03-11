@@ -39,7 +39,7 @@ var app = new Vue({
         .get(de + encodeURIComponent(this.aiPrompt), {
           crossdomain: true,
           headers: {
-            Origin: window.location.origin,
+            "X-Client-Origin": window.location.origin,
           },
         })
         .then((response) => {
