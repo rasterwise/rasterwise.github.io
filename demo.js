@@ -14,7 +14,7 @@ var app = new Vue({
       captchaToken: null,
       captchaError: null,
       ep: [
-        "aHR0cHM6Ly8wbGtkeWg1NzJkLmV4ZWN1dGUtYXBpLnVzLXdlc3QtMi5hbWF6b25hd3MuY29tL3B1YmxpYy9nZXQtc2NyZWVuc2hvdC1kZW1v",
+        "https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/gs-demo-v2",
         "?url=",
         "&height=1280&aiprompt=",
       ],
@@ -58,7 +58,7 @@ var app = new Vue({
       this.waiting = true;
       this.aiAnalysis = null;
 
-      const de = atob(this.ep[0]) + this.ep[1] + fullUrl + this.ep[2];
+      const de = this.ep[0] + this.ep[1] + fullUrl + this.ep[2];
 
       // Option 1: Using fetch instead of axios
       fetch(de + encodeURIComponent(this.aiPrompt), {
@@ -66,7 +66,7 @@ var app = new Vue({
         headers: {
           "x-cf-turnstile-response": this.captchaToken,
         },
-        mode: "no-cors",
+        mode: "cors",
       })
         .then((response) => {
           if (!response.ok) {
