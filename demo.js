@@ -60,16 +60,23 @@ var app = new Vue({
 
       const de = atob(this.ep[0]) + this.ep[1] + fullUrl + this.ep[2];
 
-      axios
-        .get(de + encodeURIComponent(this.aiPrompt), {
-          crossdomain: true,
-          headers: {
-            "x-cf-turnstile-response": this.captchaToken,
-          },
-        })
+      // Option 1: Using fetch instead of axios
+      fetch(de + encodeURIComponent(this.aiPrompt), {
+        method: "GET",
+        headers: {
+          "x-cf-turnstile-response": this.captchaToken,
+        },
+        mode: "cors",
+      })
         .then((response) => {
-          this.result = response.data.screenshotImage;
-          this.aiAnalysis = response.data.aiAnalysis;
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          this.result = data.screenshotImage;
+          this.aiAnalysis = data.aiAnalysis;
           // Reset CAPTCHA after successful submission
           if (window.turnstile) {
             window.turnstile.reset();
@@ -78,7 +85,16 @@ var app = new Vue({
         })
         .catch((error) => {
           console.log(error);
-          this.errored = true;
+          if (
+            error.message &&
+            (error.message.includes("CORS") || error.name === "TypeError")
+          ) {
+            alert(
+              "CORS error: Try adding a proxy or checking the API Gateway CORS configuration"
+            );
+          } else {
+            this.errored = true;
+          }
           // Reset CAPTCHA on error too
           if (window.turnstile) {
             window.turnstile.reset();
@@ -90,6 +106,19 @@ var app = new Vue({
           this.loaded = true;
           this.waiting = false;
         });
+
+      /* Option 2: If the above doesn't work, uncomment this
+      axios
+        .get(de + encodeURIComponent(this.aiPrompt), {
+          // Remove invalid crossdomain option
+          headers: {
+            "x-cf-turnstile-response": this.captchaToken,
+          }
+        })
+      */
+
+      /* Option 3: If both options above don't work, 
+         you could create a CORS proxy on your own server */
     },
 
     restartDemo() {
