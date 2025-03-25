@@ -21,6 +21,11 @@ var app = new Vue({
 
   methods: {
     getImageAndAnalyze() {
+      alert(
+        "Demo is currently unavailable. Try later or sign up for a free trial with code FREE5"
+      );
+      return;
+
       let fullUrl = this.url;
       if (!fullUrl.includes("http://") && !fullUrl.includes("https://")) {
         fullUrl = this.protocol + this.url;
