@@ -64,7 +64,7 @@ var app = new Vue({
         .get(de + encodeURIComponent(this.aiPrompt), {
           crossdomain: true,
           headers: {
-            "x-CF-Turnstile-Response": this.captchaToken,
+            "x-cf-turnstile-response": this.captchaToken,
           },
         })
         .then((response) => {
