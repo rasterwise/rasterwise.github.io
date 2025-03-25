@@ -290,6 +290,25 @@
                         Screenshot and Ask
                       </button>
                     </div>
+                    <!-- Cloudflare Turnstile Widget -->
+                    <div class="flex justify-center mt-3 mb-2">
+                      <div
+                        class="cf-turnstile"
+                        data-sitekey="0x4AAAAAABCeRXRGGkFlMfwb"
+                        data-callback="turnstileCallback"
+                        data-error-callback="turnstileErrorCallback"
+                        data-theme="light"
+                        data-language="auto"
+                        data-retry="auto"
+                        data-retry-interval="1500"
+                      ></div>
+                    </div>
+                    <div
+                      v-if="captchaError"
+                      class="text-red-500 text-center text-sm mb-2"
+                    >
+                      {{ captchaError }}
+                    </div>
                   </div>
 
                   <!-- Wait message -->
@@ -1628,5 +1647,11 @@
     <script src="vue.min.js"></script>
     <script src="axios.min.js" defer></script>
     <script src="demo.js"></script>
+    <!-- Cloudflare Turnstile -->
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+    ></script>
   </body>
 </html>

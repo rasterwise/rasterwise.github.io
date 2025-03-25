@@ -11,6 +11,8 @@ var app = new Vue({
       waiting: false,
       waitMessage:
         "Please wait while we capture the screenshot and analyze it...",
+      captchaToken: null,
+      captchaError: null,
       ep: [
         "aHR0cHM6Ly8wbGtkeWg1NzJkLmV4ZWN1dGUtYXBpLnVzLXdlc3QtMi5hbWF6b25hd3MuY29tL3B1YmxpYy9nZXQtc2NyZWVuc2hvdC1kZW1v",
         "?url=",
@@ -21,6 +23,12 @@ var app = new Vue({
 
   methods: {
     getImageAndAnalyze() {
+      // Verify CAPTCHA
+      if (!this.captchaToken) {
+        alert("Please complete the CAPTCHA verification");
+        return;
+      }
+
       // Obfuscated URL shortener detection
       let fullUrl = this.url;
       if (!fullUrl.includes("http://") && !fullUrl.includes("https://")) {
@@ -57,15 +65,26 @@ var app = new Vue({
           crossdomain: true,
           headers: {
             Origin: window.location.origin,
+            "CF-Turnstile-Response": this.captchaToken,
           },
         })
         .then((response) => {
           this.result = response.data.screenshotImage;
           this.aiAnalysis = response.data.aiAnalysis;
+          // Reset CAPTCHA after successful submission
+          if (window.turnstile) {
+            window.turnstile.reset();
+          }
+          this.captchaToken = null;
         })
         .catch((error) => {
           console.log(error);
           this.errored = true;
+          // Reset CAPTCHA on error too
+          if (window.turnstile) {
+            window.turnstile.reset();
+          }
+          this.captchaToken = null;
         })
         .finally(() => {
           this.loading = false;
@@ -83,6 +102,27 @@ var app = new Vue({
       this.loading = false;
       this.loaded = false;
       this.waiting = false;
+      this.captchaToken = null;
+      this.captchaError = null;
+      // Reset CAPTCHA widget
+      if (window.turnstile) {
+        window.turnstile.reset();
+      }
     },
+  },
+  mounted() {
+    // Define global CAPTCHA callback function
+    window.turnstileCallback = (token) => {
+      this.captchaToken = token;
+      this.captchaError = null;
+      console.log("CAPTCHA verified successfully");
+    };
+
+    // Error callback function
+    window.turnstileErrorCallback = (error) => {
+      console.error("CAPTCHA error:", error);
+      this.captchaError = "Error verifying CAPTCHA. Please try again.";
+      this.captchaToken = null;
+    };
   },
 });
