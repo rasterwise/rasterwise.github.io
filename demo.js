@@ -66,7 +66,7 @@ var app = new Vue({
         headers: {
           "x-cf-turnstile-response": this.captchaToken,
         },
-        mode: "cors",
+        mode: "no-cors",
       })
         .then((response) => {
           if (!response.ok) {
