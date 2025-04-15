@@ -1,3 +1,20 @@
+// Function to check if the user's language is set to Italian
+// Copied from italianBlocker.js for specific demo blocking
+function isItalianUserDemo() {
+  const userLanguage = navigator.language || navigator.userLanguage || "";
+  const languagesList = navigator.languages || [];
+
+  // Check primary language
+  if (userLanguage.toLowerCase().startsWith("it")) {
+    return true;
+  }
+
+  // Check if Italian is in the first 2 preferred languages
+  return languagesList
+    .slice(0, 2)
+    .some((lang) => lang.toLowerCase().startsWith("it"));
+}
+
 var app = new Vue({
   el: "#app",
   data() {
@@ -23,6 +40,13 @@ var app = new Vue({
 
   methods: {
     getImageAndAnalyze() {
+      // <<< ADD CHECK HERE >>>
+      if (isItalianUserDemo()) {
+        alert("Functionality not available in your region.");
+        return; // Stop execution if Italian user
+      }
+      // <<< END CHECK >>>
+
       // Verify CAPTCHA
       if (!this.captchaToken) {
         alert("Please complete the CAPTCHA verification");
