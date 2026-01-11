@@ -21,25 +21,22 @@ var app = new Vue({
     return {
       protocol: "https://",
       url: "www.apple.com",
-      aiPrompt: "What's on this page?",
-      aiAnalysis: null,
       loading: false,
       loaded: false,
       waiting: false,
-      waitMessage:
-        "Please wait while we capture the screenshot and analyze it...",
+      waitMessage: "Please wait while we capture the screenshot...",
       captchaToken: null,
       captchaError: null,
       ep: [
         "https://0lkdyh572d.execute-api.us-west-2.amazonaws.com/public/gs-demo-v2",
         "?url=",
-        "&height=1280&aiprompt=",
+        "&height=1280",
       ],
     };
   },
 
   methods: {
-    getImageAndAnalyze() {
+    getScreenshot() {
       // <<< ADD CHECK HERE >>>
       if (isItalianUserDemo()) {
         alert("Functionality not available in your region.");
@@ -80,12 +77,10 @@ var app = new Vue({
 
       this.loading = true;
       this.waiting = true;
-      this.aiAnalysis = null;
 
       const de = this.ep[0] + this.ep[1] + fullUrl + this.ep[2];
 
-      // Option 1: Using fetch instead of axios
-      fetch(de + encodeURIComponent(this.aiPrompt), {
+      fetch(de, {
         method: "GET",
         headers: {
           "x-cf-turnstile-response": this.captchaToken,
@@ -100,7 +95,6 @@ var app = new Vue({
         })
         .then((data) => {
           this.result = data.screenshotImage;
-          this.aiAnalysis = data.aiAnalysis;
           // Reset CAPTCHA after successful submission
           if (window.turnstile) {
             window.turnstile.reset();
@@ -131,26 +125,12 @@ var app = new Vue({
           this.waiting = false;
         });
 
-      /* Option 2: If the above doesn't work, uncomment this
-      axios
-        .get(de + encodeURIComponent(this.aiPrompt), {
-          // Remove invalid crossdomain option
-          headers: {
-            "x-cf-turnstile-response": this.captchaToken,
-          }
-        })
-      */
-
-      /* Option 3: If both options above don't work, 
-         you could create a CORS proxy on your own server */
     },
 
     restartDemo() {
       this.protocol = "https://";
       this.url = "www.apple.com";
-      this.aiPrompt = "What's on this page?";
       this.result = null;
-      this.aiAnalysis = null;
       this.loading = false;
       this.loaded = false;
       this.waiting = false;

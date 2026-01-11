@@ -148,7 +148,7 @@
               GetScreenshot is a powerful programmable website screenshot API
               that allows you to do screenshot capture operations at scale, and
               for less than other market solutions. No Code and Low Code
-              Friendly. Now with AI Capabilities.
+              Friendly.
             </p>
             <div class="mt-5 flex flex-col items-center lg:items-start">
               <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
@@ -244,8 +244,8 @@
                 class="max-w-m rounded overflow-hidden content-center"
               >
                 <div class="flex flex-col p-2">
-                  <!-- Input fields, only shown when not waiting and no AI analysis -->
-                  <div v-if="!waiting && !aiAnalysis">
+                  <!-- Input fields, only shown when not waiting -->
+                  <div v-if="!waiting && !loaded">
                     <div class="flex mb-2">
                       <div class="flex flex-col mr-2">
                         <label for="protocol" class="text-sm text-gray-600 mb-1"
@@ -272,23 +272,12 @@
                         />
                       </div>
                     </div>
-                    <div class="flex">
-                      <div class="flex-grow mr-2">
-                        <label for="aiPrompt" class="text-sm text-gray-600 mb-1"
-                          >AI Prompt</label
-                        >
-                        <input
-                          id="aiPrompt"
-                          class="border rounded w-full py-2 px-3 h-10 text-black leading-tight focus:outline-none focus:shadow-outline text-base"
-                          v-model="aiPrompt"
-                          placeholder="Enter your AI prompt"
-                        />
-                      </div>
+                    <div class="flex justify-end">
                       <button
-                        class="bg-red-600 px-4 rounded text-white font-semibold self-end h-10"
-                        v-on:click="getImageAndAnalyze()"
+                        class="bg-red-600 px-4 rounded text-white font-semibold h-10"
+                        v-on:click="getScreenshot()"
                       >
-                        Screenshot and Ask
+                        Screenshot
                       </button>
                     </div>
                     <!-- Cloudflare Turnstile Widget -->
@@ -326,11 +315,6 @@
                     Restart Demo
                   </button>
 
-                  <!-- AI Analysis -->
-                  <div v-if="aiAnalysis" class="mt-4">
-                    <h3 class="text-lg font-semibold mb-2">AI Analysis:</h3>
-                    <p class="text-gray-700">{{ aiAnalysis }}</p>
-                  </div>
                 </div>
 
                 <!-- Image display with label -->
