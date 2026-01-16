@@ -201,8 +201,9 @@
             var usedFormatted = used.toLocaleString();
             var remainingFormatted = remaining.toLocaleString();
 
-            // Format reset date
-            var resetDate = new Date(data.quotaRestartDate);
+            // Format reset date (parse manually to avoid UTC timezone shift)
+            var parts = data.quotaRestartDate.split('-');
+            var resetDate = new Date(parts[0], parts[1] - 1, parts[2]);
             var resetFormatted = resetDate.toLocaleDateString("en-US", {
               year: "numeric",
               month: "long",
