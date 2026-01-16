@@ -45,6 +45,9 @@
       html {
         scroll-behavior: smooth;
       }
+      .input-placeholder-sm::placeholder {
+        font-size: 0.875rem;
+      }
     </style>
 
     <!-- Javascript Stuff -->
@@ -120,9 +123,11 @@
           return;
         }
         var emailCust = $("#email-input").val();
-        var button = $(".button-bottom");
+        var button = $("#recover-btn");
 
         button.val("Please wait...");
+        button.addClass("opacity-50 cursor-not-allowed");
+        button.prop("disabled", true);
 
         var data = {
           email: emailCust,
@@ -147,7 +152,75 @@
           error: function (err) {
             // show an error message
             console.log(err);
-            alert("Opps. Something happened. Please reload and try again.");
+            button.val("Recover API Key");
+            button.removeClass("opacity-50 cursor-not-allowed");
+            button.prop("disabled", false);
+            alert("Oops. Something happened. Please reload and try again.");
+          },
+        });
+      }
+
+      function fetchUsage(e) {
+        e.preventDefault();
+        var email = $("#usage-email").val().trim();
+        var apiKey = $("#usage-apikey").val().trim();
+
+        if (email === "") {
+          alert("Please enter your email address");
+          return;
+        }
+        if (apiKey === "") {
+          alert("Please enter your API key");
+          return;
+        }
+
+        var button = $("#usage-btn");
+        button.val("Loading...");
+        button.addClass("opacity-50 cursor-not-allowed");
+        button.prop("disabled", true);
+
+        // Hide previous results/errors
+        $("#usage-results").addClass("hidden");
+        $("#usage-error").addClass("hidden");
+
+        $.ajax({
+          type: "GET",
+          url: "https://api.rasterwise.com/v1/usage?apikey=" + encodeURIComponent(apiKey) + "&email=" + encodeURIComponent(email),
+          dataType: "json",
+
+          success: function (data) {
+            button.val("View Usage");
+            button.removeClass("opacity-50 cursor-not-allowed");
+            button.prop("disabled", false);
+
+            // Format numbers with commas
+            var usedFormatted = data.used.toLocaleString();
+            var remainingFormatted = data.remaining.toLocaleString();
+
+            // Format reset date
+            var resetDate = new Date(data.resetDate);
+            var resetFormatted = resetDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric"
+            });
+
+            $("#usage-used").text(usedFormatted);
+            $("#usage-remaining").text(remainingFormatted);
+            $("#usage-reset").text(resetFormatted);
+            $("#usage-results").removeClass("hidden");
+          },
+          error: function (err) {
+            button.val("View Usage");
+            button.removeClass("opacity-50 cursor-not-allowed");
+            button.prop("disabled", false);
+
+            var errorMsg = "Unable to fetch usage data. Please check your email and API key.";
+            if (err.responseJSON && err.responseJSON.message) {
+              errorMsg = err.responseJSON.message;
+            }
+            $("#usage-error-msg").text(errorMsg);
+            $("#usage-error").removeClass("hidden");
           },
         });
       }
@@ -301,21 +374,85 @@
               <input
                 id="email-input"
                 type="email"
-                class="w-72 border-2 h-10 rounded"
+                class="w-72 border-2 h-10 rounded input-placeholder-sm"
                 maxlength="256"
                 name="email-2"
                 data-name="Email 2"
                 placeholder="&nbsp;Enter your email address"
-                id="email-2"
                 required=""
               /><input
+                id="recover-btn"
                 onClick="submitToAPI(event)"
                 type="submit"
                 value="Recover API Key"
                 data-wait="Please wait..."
-                class="ml-3 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-gray-800 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm"
+                class="ml-3 inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-gray-800 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm cursor-pointer"
               />
             </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Usage -->
+      <div class="bg-white shadow sm:rounded-lg mt-8">
+        <div class="px-4 py-5 sm:p-6">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            View Usage
+          </h3>
+          <div class="mt-2 max-w-xl text-sm text-gray-500">
+            <p>
+              Check your current API usage, remaining quota, and when your quota resets.
+            </p>
+          </div>
+          <div class="mt-5">
+            <form id="usage-form" class="form">
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+                <input
+                  id="usage-email"
+                  type="email"
+                  class="w-72 border-2 h-10 rounded input-placeholder-sm"
+                  placeholder="&nbsp;Enter your email address"
+                  required=""
+                />
+                <input
+                  id="usage-apikey"
+                  type="text"
+                  class="w-72 border-2 h-10 rounded input-placeholder-sm"
+                  placeholder="&nbsp;Enter your API key"
+                  required=""
+                />
+                <input
+                  id="usage-btn"
+                  onClick="fetchUsage(event)"
+                  type="submit"
+                  value="View Usage"
+                  class="inline-flex items-center justify-center px-4 py-2 border border-transparent font-medium rounded-md text-white bg-gray-800 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:text-sm cursor-pointer"
+                />
+              </div>
+            </form>
+
+            <!-- Usage Results -->
+            <div id="usage-results" class="hidden mt-4 p-4 bg-gray-50 rounded-md">
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <p class="text-sm font-medium text-gray-500">Used</p>
+                  <p id="usage-used" class="mt-1 text-lg font-semibold text-gray-900">-</p>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-500">Remaining</p>
+                  <p id="usage-remaining" class="mt-1 text-lg font-semibold text-gray-900">-</p>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-gray-500">Resets On</p>
+                  <p id="usage-reset" class="mt-1 text-lg font-semibold text-gray-900">-</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Usage Error -->
+            <div id="usage-error" class="hidden mt-4 p-4 bg-red-50 rounded-md">
+              <p id="usage-error-msg" class="text-sm text-red-700">An error occurred.</p>
+            </div>
           </div>
         </div>
       </div>
