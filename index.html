@@ -94,7 +94,7 @@
               </a>
               <a
                 href="#pricing"
-                class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 whitespace-nowrap"
+                class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 border-2 border-transparent whitespace-nowrap"
               >
                 Get API Key
               </a>
@@ -154,7 +154,7 @@
                 <div class="rounded-md shadow">
                   <a
                     href="#pricing"
-                    class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
+                    class="w-full flex items-center justify-center px-8 py-3 border-2 border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
                   >
                     Get API Key
                   </a>
@@ -245,7 +245,7 @@
                 <div class="flex flex-col p-2">
                   <!-- Input fields, only shown when not waiting -->
                   <div v-if="!waiting && !loaded">
-                    <div class="flex mb-2">
+                    <div class="flex mb-2 items-end">
                       <div class="flex flex-col mr-2">
                         <label for="protocol" class="text-sm text-gray-600 mb-1"
                           >Protocol</label
@@ -270,14 +270,14 @@
                           v-bind:placeholder="url"
                         />
                       </div>
-                    </div>
-                    <div class="flex justify-end">
-                      <button
-                        class="bg-red-600 px-4 rounded text-white font-semibold h-10"
-                        v-on:click="getScreenshot()"
-                      >
-                        Screenshot
-                      </button>
+                      <div class="ml-2">
+                        <button
+                          class="bg-red-600 px-4 rounded text-white font-semibold h-10"
+                          v-on:click="getScreenshot()"
+                        >
+                          Screenshot
+                        </button>
+                      </div>
                     </div>
                     <!-- Cloudflare Turnstile Widget -->
                     <div class="flex justify-center mt-3 mb-2">
