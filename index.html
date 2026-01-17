@@ -7,6 +7,9 @@
 
     <!-- npx tailwindcss -i ./style.css -o ./output.css -->
     <link href="output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>
       GetScreenshot - Affordable Screenshot API with Zapier & n8n Integration
     </title>
@@ -48,8 +51,78 @@
     />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <style>
-      html {
-        scroll-behavior: smooth;
+      /* Base */
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+
+      /* Shadows */
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+
+      /* Primary Button */
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+
+      /* Secondary Button */
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+
+      /* Pricing Cards */
+      .pricing-card {
+        transition: all 0.25s ease;
+        border-top: 3px solid transparent;
+      }
+      .pricing-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+        border-top-color: #dc2626;
+      }
+
+      /* Feature Icons */
+      .feature-icon { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+      .feature-icon:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+      }
+
+      /* Section Divider */
+      .section-divider { position: relative; }
+      .section-divider::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 64px;
+        height: 4px;
+        background: linear-gradient(90deg, #dc2626, #ef4444);
+        border-radius: 2px;
+      }
+
+      /* Popular Badge */
+      @keyframes subtle-pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.85; }
+      }
+      .badge-popular { animation: subtle-pulse 2s ease-in-out infinite; }
+
+      /* Focus States */
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
       }
     </style>
     <link
@@ -63,7 +136,7 @@
 
   <body class="bg-gray-50">
     <div class="relative bg-gray-50">
-      <header class="relative bg-white shadow">
+      <header class="relative bg-white shadow-soft">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
           <div class="flex items-center justify-between h-16 sm:h-20">
             <!-- Logo - never shrinks -->
@@ -77,24 +150,24 @@
 
             <!-- Desktop Navigation - centered, hidden on mobile -->
             <nav class="hidden lg:flex items-center space-x-8">
-              <a href="#features" class="text-base font-medium text-gray-500 hover:text-gray-900">Features</a>
-              <a href="#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900">Pricing</a>
-              <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900">Docs</a>
-              <a href="#faq" class="text-base font-medium text-gray-500 hover:text-gray-900">FAQ</a>
-              <a href="https://blog.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900">Blog</a>
+              <a href="#features" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+              <a href="#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+              <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+              <a href="#faq" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">FAQ</a>
+              <a href="https://blog.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Blog</a>
             </nav>
 
             <!-- Right side - never shrinks -->
             <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
               <a
                 href="/account"
-                class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white hover:bg-gray-200 whitespace-nowrap"
+                class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap"
               >
                 Manage Account
               </a>
               <a
                 href="#pricing"
-                class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 border-2 border-transparent whitespace-nowrap"
+                class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap"
               >
                 Get API Key
               </a>
@@ -125,12 +198,12 @@
             <a href="https://docs.rasterwise.com" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Docs</a>
             <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">FAQ</a>
             <a href="https://blog.rasterwise.com" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Blog</a>
-            <a href="#pricing" class="block px-3 py-2 mt-2 rounded-md text-base font-medium text-center text-white bg-red-600 hover:bg-red-700">Get API Key</a>
+            <a href="#pricing" class="block px-3 py-2 mt-2 rounded-md text-base font-medium text-center text-white btn-primary">Get API Key</a>
           </div>
         </div>
       </header>
 
-      <main class="lg:relative">
+      <main class="lg:relative" style="background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);">
         <div
           class="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left"
         >
@@ -138,8 +211,8 @@
             <h1
               class="text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl md:text-6xl lg:text-4xl xl:text-5xl"
             >
-              <span class="block">Affordable and Powerful</span>
-              <span class="block text-red-600 xl:inline">Screenshot API</span>
+              <span class="block" style="letter-spacing: -0.02em;">Affordable and Powerful</span>
+              <span class="block text-red-600 xl:inline" style="letter-spacing: -0.02em;">Screenshot API</span>
             </h1>
             <p
               class="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl"
@@ -154,7 +227,7 @@
                 <div class="rounded-md shadow">
                   <a
                     href="#pricing"
-                    class="w-full flex items-center justify-center px-8 py-3 border-2 border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
+                    class="w-full flex items-center justify-center px-8 py-3 border-2 border-transparent text-base font-medium rounded-md text-white btn-primary md:py-4 md:text-lg md:px-10"
                   >
                     Get API Key
                   </a>
@@ -162,7 +235,7 @@
                 <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                   <a
                     href="#live-demo"
-                    class="w-full flex items-center justify-center px-8 py-3 border-transparent text-base font-medium rounded-md text-gray-700 border-gray-600 border-2 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+                    class="w-full flex items-center justify-center px-8 py-3 border-transparent text-base font-medium rounded-md text-gray-700 border-gray-600 border-2 bg-white btn-secondary md:py-4 md:text-lg md:px-10"
                   >
                     Live Demo
                   </a>
@@ -183,7 +256,7 @@
       </main>
     </div>
 
-    <div class="py-2">
+    <div class="py-12 sm:py-16">
       <div class="flex flex-col items-center">
         <h2
           class="text-center text-xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-3xl"
@@ -231,12 +304,12 @@
             aria-hidden="true"
           >
             <div
-              class="relative mx-auto flex flex-col items-center bg-white rounded-lg shadow-lg p-4"
+              class="relative mx-auto flex flex-col items-center bg-white rounded-xl shadow-soft-lg p-6"
             >
               <div
-                class="text-md text-gray-500 uppercase tracking-wide font-semibold"
+                class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700 uppercase tracking-wide"
               >
-                Give it a try! 👇
+                Live Demo
               </div>
               <div
                 id="app"
@@ -359,7 +432,7 @@
               <div class="relative">
                 <dt>
                   <div
-                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white"
+                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white feature-icon"
                   >
                     <!-- Heroicon name: outline/globe-alt -->
                     <svg
@@ -392,7 +465,7 @@
               <div class="relative">
                 <dt>
                   <div
-                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white"
+                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white feature-icon"
                   >
                     <!-- Heroicon name: outline/scale -->
                     <svg
@@ -425,7 +498,7 @@
               <div class="relative">
                 <dt>
                   <div
-                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white"
+                    class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-red-500 text-white feature-icon"
                   >
                     <!-- Heroicon name: outline/lightning-bolt -->
                     <svg
@@ -708,7 +781,7 @@
       <a
         href="https://docs.rasterwise.com"
         target="_blank"
-        class="inline-flex items-center px-6 py-3 border-transparent text-base font-medium rounded-md text-gray-700 border-gray-600 border-2 bg-white hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        class="inline-flex items-center px-6 py-3 border-transparent text-base font-medium rounded-md text-gray-700 border-gray-600 border-2 bg-white btn-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
       >
         View Documentation
       </a>
@@ -735,7 +808,7 @@
         class="mt-12 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-8"
       >
         <div
-          class="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm flex flex-col"
+          class="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm flex flex-col pricing-card"
         >
           <div class="flex-1">
             <h3 class="text-xl font-semibold text-gray-900">Lincoln Plan</h3>
@@ -878,12 +951,12 @@
         </div>
 
         <div
-          class="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm flex flex-col"
+          class="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm flex flex-col pricing-card"
         >
           <div class="flex-1">
             <div class="mb-6">
               <p
-                class="absolute top-0 right-0 py-1.5 px-4 bg-green-700 rounded-full text-xs font-semibold uppercase tracking-wide text-white transform translate-x-2 -translate-y-1/2"
+                class="absolute top-0 right-0 py-1.5 px-4 bg-green-600 shadow-md rounded-full text-xs font-semibold uppercase tracking-wide text-white transform translate-x-2 -translate-y-1/2 badge-popular"
               >
                 Most Popular
               </p>
@@ -1066,7 +1139,7 @@
         </div>
 
         <div
-          class="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm flex flex-col"
+          class="relative p-8 bg-white border border-gray-200 rounded-2xl shadow-sm flex flex-col pricing-card"
         >
           <div class="flex-1">
             <h3 class="text-xl font-semibold text-gray-900">Jackson Plan</h3>
@@ -1407,7 +1480,7 @@
           </div>
         </nav>
         <p class="mt-8 text-center text-base text-gray-400">
-          &copy; 2024 Rasterwise, LLC. All rights reserved.
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
         </p>
       </div>
     </footer>
