@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Screenshot API Comparison - GetScreenshot vs Alternatives | GetScreenshot</title>
+    <meta name="description" content="Compare GetScreenshot with other screenshot API providers. See how we stack up against alternatives on pricing, features, and ease of use. Find the best screenshot API for your needs." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/compare/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/compare/" />
+    <meta property="og:title" content="Screenshot API Comparison - GetScreenshot" />
+    <meta property="og:description" content="Compare GetScreenshot with other screenshot API providers on pricing, features, and ease of use." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/compare/" />
+    <meta property="twitter:title" content="Screenshot API Comparison - GetScreenshot" />
+    <meta property="twitter:description" content="Compare screenshot API providers." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .compare-card {
+        transition: all 0.25s ease;
+      }
+      .compare-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+      }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Integrations</a>
+            <a href="/use-cases/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Use Cases</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-red-600 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700 uppercase tracking-wide">
+            Comparison
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Compare Screenshot APIs
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            See how GetScreenshot compares to other screenshot API services. We focus on affordability, ease of use, and powerful features.
+          </p>
+        </div>
+      </section>
+
+      <!-- Why GetScreenshot -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Why Choose GetScreenshot?</h2>
+            <p class="mt-4 text-lg text-gray-500">Key advantages over other screenshot APIs</p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">3X More Affordable</h3>
+              <p class="text-gray-500">
+                Starting at just $5/month for 2,500 screenshots. Most competitors charge $29-49/month for similar volume.
+              </p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">No-Code Ready</h3>
+              <p class="text-gray-500">
+                Official Zapier integration and n8n support included. Most APIs require coding knowledge to use.
+              </p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Simple GET API</h3>
+              <p class="text-gray-500">
+                No complex POST payloads or authentication headers. Just construct a URL and you're done.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Comparison Articles -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Detailed Comparisons</h2>
+            <p class="mt-4 text-lg text-gray-500">See how GetScreenshot stacks up against specific alternatives</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <a href="/compare/screenshot-api-alternatives.html" class="block p-6 bg-gray-50 rounded-xl compare-card border-2 border-transparent hover:border-red-500">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <div>
+                  <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                    Popular
+                  </span>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Best Screenshot API Alternatives</h3>
+              <p class="text-gray-500 mb-4">
+                Comprehensive guide to screenshot API options. Compare features, pricing, and use cases to find the best fit.
+              </p>
+              <span class="inline-flex items-center text-red-600 font-medium">
+                Read comparison
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+
+            <a href="/compare/affordable-screenshot-api.html" class="block p-6 bg-gray-50 rounded-xl compare-card border-2 border-transparent hover:border-red-500">
+              <div class="flex items-center gap-4 mb-4">
+                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                  <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Affordable Screenshot APIs</h3>
+              <p class="text-gray-500 mb-4">
+                Looking for budget-friendly options? See how GetScreenshot offers premium features at a fraction of the cost.
+              </p>
+              <span class="inline-flex items-center text-red-600 font-medium">
+                Read comparison
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+          </div>
+
+          <!-- Head-to-Head Comparisons -->
+          <div class="mt-12">
+            <h3 class="text-xl font-semibold text-gray-900 mb-6 text-center">Head-to-Head Comparisons</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <a href="/compare/vs-apiflash.html" class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div class="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
+                  <svg class="w-4 h-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                <span class="font-medium text-gray-900">GetScreenshot vs APIFlash</span>
+              </a>
+              <a href="/compare/vs-urlbox.html" class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div class="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
+                  <svg class="w-4 h-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                <span class="font-medium text-gray-900">GetScreenshot vs Urlbox</span>
+              </a>
+              <a href="/compare/vs-screenshotlayer.html" class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div class="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
+                  <svg class="w-4 h-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                <span class="font-medium text-gray-900">GetScreenshot vs Screenshotlayer</span>
+              </a>
+              <a href="/compare/vs-screenshotmachine.html" class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div class="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
+                  <svg class="w-4 h-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                <span class="font-medium text-gray-900">GetScreenshot vs ScreenshotMachine</span>
+              </a>
+              <a href="/compare/vs-browshot.html" class="flex items-center gap-3 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div class="w-8 h-8 bg-red-100 rounded flex items-center justify-center">
+                  <svg class="w-4 h-4 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </div>
+                <span class="font-medium text-gray-900">GetScreenshot vs Browshot</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Comparison Table -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Quick Feature Comparison</h2>
+            <p class="mt-4 text-lg text-gray-500">How GetScreenshot compares on key features</p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full bg-white rounded-xl shadow-soft overflow-hidden">
+              <thead>
+                <tr class="bg-gray-50">
+                  <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900">Feature</th>
+                  <th class="px-6 py-4 text-center text-sm font-semibold text-red-600">GetScreenshot</th>
+                  <th class="px-6 py-4 text-center text-sm font-semibold text-gray-500">Typical Competitor</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 text-gray-700">Starting Price</td>
+                  <td class="px-6 py-4 text-center">
+                    <span class="font-semibold text-green-600">$5/month</span>
+                  </td>
+                  <td class="px-6 py-4 text-center text-gray-500">$29-49/month</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-gray-700">Screenshots Included</td>
+                  <td class="px-6 py-4 text-center">
+                    <span class="font-semibold text-green-600">2,500+</span>
+                  </td>
+                  <td class="px-6 py-4 text-center text-gray-500">100-1,000</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-gray-700">Zapier Integration</td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <span class="text-gray-400">Varies</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-gray-700">n8n Integration</td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-gray-300 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-gray-700">Full Page Capture</td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-gray-700">PDF Generation</td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <span class="text-gray-400">Often extra</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-gray-700">Email Delivery</td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-gray-300 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-gray-700">Webhook Support</td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </td>
+                  <td class="px-6 py-4 text-center">
+                    <svg class="w-6 h-6 text-green-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-gray-700">API Simplicity</td>
+                  <td class="px-6 py-4 text-center">
+                    <span class="font-semibold text-green-600">GET request</span>
+                  </td>
+                  <td class="px-6 py-4 text-center text-gray-500">POST + auth headers</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Ready to Try the Affordable Alternative?</h2>
+          <p class="mt-4 text-red-100 text-lg">Get started with GetScreenshot. Use code FREE5 for a free month on the Lincoln plan.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              View Pricing
+            </a>
+            <a href="/#live-demo" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              Try Live Demo
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/use-cases/" class="text-base text-gray-500 hover:text-gray-900">Use Cases</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

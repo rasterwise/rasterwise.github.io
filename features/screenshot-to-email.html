@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Screenshot to Email API - Send Screenshots Directly | GetScreenshot</title>
+    <meta name="description" content="Send website screenshots directly to any email address. Automate screenshot delivery with GetScreenshot's email integration for reports and monitoring." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/features/screenshot-to-email.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/features/screenshot-to-email.html" />
+    <meta property="og:title" content="Screenshot to Email API - GetScreenshot" />
+    <meta property="og:description" content="Send website screenshots directly to any email address. Perfect for automated reports and monitoring." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/features/screenshot-to-email.html" />
+    <meta property="twitter:title" content="Screenshot to Email API" />
+    <meta property="twitter:description" content="Send website screenshots directly to email for automated reports and monitoring." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .code-block {
+        background: #1f2937;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      .code-block code {
+        color: #e5e7eb;
+        font-family: 'Monaco', 'Menlo', monospace;
+        font-size: 14px;
+      }
+      .code-block .param { color: #fbbf24; }
+      .code-block .value { color: #34d399; }
+      .code-block .base { color: #93c5fd; }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Screenshot to Email API",
+      "description": "Learn how to send website screenshots directly to email addresses using GetScreenshot's API.",
+      "author": {
+        "@type": "Organization",
+        "name": "GetScreenshot"
+      }
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-red-600 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Integrations</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="/features/" class="text-gray-500 hover:text-gray-700">Features</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">Screenshot to Email</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700 uppercase tracking-wide">
+            Feature
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Screenshot to Email
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            Send website screenshots directly to any email address. Perfect for automated reports, monitoring alerts, and sharing captures without additional infrastructure.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="btn-primary px-8 py-3 rounded-md text-white font-medium text-lg">
+              Get Started - From $5/mo
+            </a>
+            <a href="/#live-demo" class="btn-secondary px-8 py-3 rounded-md font-medium border-2 border-gray-600 text-lg">
+              Try Live Demo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+            <div>
+              <h2 class="text-3xl font-bold text-gray-900">How Screenshot to Email Works</h2>
+              <p class="mt-4 text-lg text-gray-500">
+                Simply add the <code class="bg-gray-200 px-2 py-1 rounded text-red-600">email</code> parameter to your API request with a valid email address. GetScreenshot will capture the screenshot and deliver it directly to that inbox as an attachment.
+              </p>
+              <p class="mt-4 text-lg text-gray-500">
+                The email includes the screenshot as an attachment along with metadata like the URL, capture timestamp, and image dimensions. No need to set up your own email server or file storage.
+              </p>
+
+              <div class="mt-8 bg-white rounded-lg p-6 border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">API Parameter</h3>
+                <div class="code-block p-4">
+                  <code><span class="param">email</span>=<span class="value">{email address}</span></code>
+                </div>
+                <p class="mt-4 text-gray-600">
+                  Pass any valid email address. The screenshot will be sent as an attachment to that address.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-10 lg:mt-0">
+              <div class="bg-white rounded-xl shadow-soft-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Example Request</h3>
+                <div class="code-block p-4">
+                  <code>
+                    <span class="base">https://api.rasterwise.com/v1/get-screenshot</span><br>
+                    &nbsp;&nbsp;?<span class="param">apikey</span>=<span class="value">YOUR_API_KEY</span><br>
+                    &nbsp;&nbsp;&<span class="param">url</span>=<span class="value">https://example.com/dashboard</span><br>
+                    &nbsp;&nbsp;&<span class="param">email</span>=<span class="value">reports@yourcompany.com</span><br>
+                    &nbsp;&nbsp;&<span class="param">fullpage</span>=<span class="value">true</span>
+                  </code>
+                </div>
+
+                <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-4">Email Contents</h3>
+                <div class="bg-gray-100 rounded-lg p-4 text-sm text-gray-700">
+                  <p class="font-medium">Subject: Screenshot of example.com/dashboard</p>
+                  <p class="mt-2">Attached: screenshot_2026-01-18_143022.png</p>
+                  <p class="mt-1">URL: https://example.com/dashboard</p>
+                  <p class="mt-1">Captured: January 18, 2026 at 2:30 PM</p>
+                  <p class="mt-1">Dimensions: 1280 x 2400px</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Use Cases -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Common Use Cases</h2>
+            <p class="mt-4 text-lg text-gray-500">Screenshot to email simplifies many workflows</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Daily Reports</h3>
+              <p class="text-gray-500">Schedule daily screenshots of dashboards, analytics, or KPI pages delivered directly to stakeholders' inboxes.</p>
+              <a href="/use-cases/reporting-dashboards.html" class="inline-flex items-center mt-4 text-red-600 font-medium hover:text-red-700">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Monitoring Alerts</h3>
+              <p class="text-gray-500">Send visual alerts when website changes are detected. Get email notifications with before/after screenshots.</p>
+              <a href="/use-cases/website-monitoring.html" class="inline-flex items-center mt-4 text-red-600 font-medium hover:text-red-700">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Team Collaboration</h3>
+              <p class="text-gray-500">Share website screenshots with team members or clients without setting up file sharing or messaging tools.</p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Compliance Records</h3>
+              <p class="text-gray-500">Automatically email screenshots as compliance evidence. Create email-based audit trails with timestamped captures.</p>
+              <a href="/use-cases/archival-compliance.html" class="inline-flex items-center mt-4 text-red-600 font-medium hover:text-red-700">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Social Proof Capture</h3>
+              <p class="text-gray-500">Capture mentions, reviews, or testimonials and email them to your marketing team automatically.</p>
+              <a href="/use-cases/social-media-automation.html" class="inline-flex items-center mt-4 text-red-600 font-medium hover:text-red-700">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Scheduled Captures</h3>
+              <p class="text-gray-500">Combine with scheduling tools to receive periodic screenshots of any webpage at set intervals.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Integration Section -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Works with No-Code Tools</h2>
+            <p class="mt-4 text-lg text-gray-500">Automate screenshot emails without writing code</p>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-8">
+            <a href="/integrations/zapier.html" class="flex items-center gap-3 px-6 py-4 bg-white rounded-lg shadow-soft hover:shadow-soft-lg transition-all">
+              <img src="../images/zapier.svg" alt="Zapier" class="h-8" />
+              <div>
+                <span class="font-medium text-gray-900">Zapier</span>
+                <p class="text-sm text-gray-500">Schedule + email screenshots</p>
+              </div>
+            </a>
+
+            <a href="/integrations/n8n.html" class="flex items-center gap-3 px-6 py-4 bg-white rounded-lg shadow-soft hover:shadow-soft-lg transition-all">
+              <img src="../images/n8n-logo.png" alt="n8n" class="h-10" />
+              <div>
+                <span class="font-medium text-gray-900">n8n</span>
+                <p class="text-sm text-gray-500">Automated email workflows</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Features -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Combine with Other Features</h2>
+            <p class="mt-4 text-lg text-gray-500">Screenshot to email works with all capture options</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="/features/full-page-screenshots.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Full Page Screenshots</h3>
+              <p class="mt-2 text-sm text-gray-500">Email complete page captures for comprehensive reporting.</p>
+            </a>
+
+            <a href="/features/pdf-generation.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">PDF Generation</h3>
+              <p class="mt-2 text-sm text-gray-500">Receive PDFs instead of images for professional documents.</p>
+            </a>
+
+            <a href="/features/keyword-highlighting.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Keyword Highlighting</h3>
+              <p class="mt-2 text-sm text-gray-500">Email highlighted screenshots for brand monitoring alerts.</p>
+            </a>
+
+            <a href="/features/element-targeting.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Element Targeting</h3>
+              <p class="mt-2 text-sm text-gray-500">Email specific components like charts or data tables.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Ready to Email Screenshots?</h2>
+          <p class="mt-4 text-red-100 text-lg">Get started with GetScreenshot's email delivery. Available on all plans.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              View Pricing
+            </a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              Read Documentation
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

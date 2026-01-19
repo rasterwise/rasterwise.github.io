@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Hide Chat Widgets in Screenshots - Remove Intercom, Drift | GetScreenshot</title>
+    <meta name="description" content="Automatically hide chat widgets from Intercom, Drift, Tawk, Zendesk, and other providers in your screenshots. Get clean captures with one API parameter." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/features/hide-chat-widgets.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/features/hide-chat-widgets.html" />
+    <meta property="og:title" content="Hide Chat Widgets in Screenshots - GetScreenshot API" />
+    <meta property="og:description" content="Automatically hide chat widgets from Intercom, Drift, Tawk, and more for clean screenshots." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/features/hide-chat-widgets.html" />
+    <meta property="twitter:title" content="Hide Chat Widgets in Screenshots" />
+    <meta property="twitter:description" content="Remove chat widgets from screenshots automatically with GetScreenshot." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .code-block {
+        background: #1f2937;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      .code-block code {
+        color: #e5e7eb;
+        font-family: 'Monaco', 'Menlo', monospace;
+        font-size: 14px;
+      }
+      .code-block .param { color: #fbbf24; }
+      .code-block .value { color: #34d399; }
+      .code-block .base { color: #93c5fd; }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Hide Chat Widgets in Screenshots",
+      "description": "Learn how to automatically hide chat widgets from popular providers in your screenshots using GetScreenshot's API.",
+      "author": {
+        "@type": "Organization",
+        "name": "GetScreenshot"
+      }
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-red-600 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Integrations</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="/features/" class="text-gray-500 hover:text-gray-700">Features</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">Hide Chat Widgets</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700 uppercase tracking-wide">
+            Feature
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Hide Chat Widgets
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            Automatically remove chat widgets from Intercom, Drift, Tawk, Zendesk, Facebook Messenger, and other popular providers. Get clean, professional screenshots with a single parameter.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="btn-primary px-8 py-3 rounded-md text-white font-medium text-lg">
+              Get Started - From $5/mo
+            </a>
+            <a href="/#live-demo" class="btn-secondary px-8 py-3 rounded-md font-medium border-2 border-gray-600 text-lg">
+              Try Live Demo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+            <div>
+              <h2 class="text-3xl font-bold text-gray-900">How It Works</h2>
+              <p class="mt-4 text-lg text-gray-500">
+                Chat widgets are essential for customer support, but they can clutter screenshots. The <code class="bg-gray-200 px-2 py-1 rounded text-red-600">hidechatwidgets</code> parameter automatically detects and hides the most popular chat solutions.
+              </p>
+              <p class="mt-4 text-lg text-gray-500">
+                No need to write custom CSS or JavaScript to hide these elements. GetScreenshot maintains an updated list of chat widget selectors and handles the removal automatically.
+              </p>
+
+              <div class="mt-8 bg-white rounded-lg p-6 border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">API Parameter</h3>
+                <div class="code-block p-4">
+                  <code><span class="param">hidechatwidgets</span>=<span class="value">true</span></code>
+                </div>
+                <p class="mt-4 text-gray-600">
+                  Set to <code class="bg-gray-100 px-1 rounded">true</code> to automatically hide all recognized chat widgets. Default is <code class="bg-gray-100 px-1 rounded">false</code>.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-10 lg:mt-0">
+              <div class="bg-white rounded-xl shadow-soft-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Supported Chat Providers</h3>
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">Intercom</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">Drift</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">Tawk.to</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">Zendesk Chat</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">Facebook Messenger</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">Crisp</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">LiveChat</span>
+                  </div>
+                  <div class="flex items-center gap-2 p-3 bg-gray-50 rounded-lg">
+                    <svg class="w-5 h-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="text-gray-700">HubSpot</span>
+                  </div>
+                </div>
+                <p class="mt-4 text-sm text-gray-500">...and many more chat solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Example Request -->
+      <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Example: Clean Screenshot</h2>
+            <p class="mt-4 text-lg text-gray-500">Capture any website without distracting chat bubbles</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+            <div class="code-block p-4">
+              <code>
+                <span class="base">https://api.rasterwise.com/v1/get-screenshot</span><br>
+                &nbsp;&nbsp;?<span class="param">apikey</span>=<span class="value">YOUR_API_KEY</span><br>
+                &nbsp;&nbsp;&<span class="param">url</span>=<span class="value">https://example.com</span><br>
+                &nbsp;&nbsp;&<span class="param">hidechatwidgets</span>=<span class="value">true</span><br>
+                &nbsp;&nbsp;&<span class="param">fullpage</span>=<span class="value">true</span>
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Use Cases -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Common Use Cases</h2>
+            <p class="mt-4 text-lg text-gray-500">Clean screenshots are essential for many workflows</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Portfolio Screenshots</h3>
+              <p class="text-gray-500">Capture client websites for your portfolio without their support chat widgets cluttering the design.</p>
+              <a href="/use-cases/portfolio-generation.html" class="inline-flex items-center mt-4 text-red-600 font-medium hover:text-red-700">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Competitive Analysis</h3>
+              <p class="text-gray-500">Get clean screenshots of competitor websites for analysis without their chat interfaces interfering.</p>
+              <a href="/use-cases/competitive-analysis.html" class="inline-flex items-center mt-4 text-red-600 font-medium hover:text-red-700">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Documentation</h3>
+              <p class="text-gray-500">Create professional documentation screenshots without distracting UI elements from third-party services.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Website Archiving</h3>
+              <p class="text-gray-500">Archive websites with clean, permanent records that focus on content rather than temporary widgets.</p>
+              <a href="/use-cases/archival-compliance.html" class="inline-flex items-center mt-4 text-red-600 font-medium hover:text-red-700">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Visual QA Testing</h3>
+              <p class="text-gray-500">Test website layouts without chat widgets that can vary or interfere with visual regression tests.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Marketing Assets</h3>
+              <p class="text-gray-500">Generate clean website thumbnails and previews for marketing materials and presentations.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Features -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Related Features</h2>
+            <p class="mt-4 text-lg text-gray-500">Combine with other cleanup options for the cleanest screenshots</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="/features/cookie-banner-removal.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Cookie Banner Removal</h3>
+              <p class="mt-2 text-sm text-gray-500">Also hide GDPR cookie consent banners for even cleaner captures.</p>
+            </a>
+
+            <a href="/features/custom-css-javascript.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Custom CSS</h3>
+              <p class="mt-2 text-sm text-gray-500">Hide additional elements or customize the page appearance.</p>
+            </a>
+
+            <a href="/features/full-page-screenshots.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Full Page Screenshots</h3>
+              <p class="mt-2 text-sm text-gray-500">Capture entire pages without floating chat widgets.</p>
+            </a>
+
+            <a href="/features/pdf-generation.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">PDF Generation</h3>
+              <p class="mt-2 text-sm text-gray-500">Generate clean PDFs without chat widget interference.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Ready for Clean Screenshots?</h2>
+          <p class="mt-4 text-red-100 text-lg">Get started with GetScreenshot's chat widget hiding. Available on all plans.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              View Pricing
+            </a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              Read Documentation
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

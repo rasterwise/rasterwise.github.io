@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Screenshot API Glossary - Terms & Definitions | GetScreenshot</title>
+    <meta name="description" content="Learn key screenshot API terminology. Definitions for URL to image, website thumbnails, headless browser screenshots, and more." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/glossary/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/glossary/" />
+    <meta property="og:title" content="Screenshot API Glossary - GetScreenshot" />
+    <meta property="og:description" content="Learn key screenshot API terms and definitions." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/glossary/" />
+    <meta property="twitter:title" content="Screenshot API Glossary - GetScreenshot" />
+    <meta property="twitter:description" content="Learn key screenshot API terms." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+      .glossary-card:hover {
+        border-color: #fca5a5;
+        transform: translateY(-2px);
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Screenshot API Glossary",
+      "description": "Comprehensive glossary of screenshot API terms and definitions.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GetScreenshot"
+      }
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Integrations</a>
+            <a href="/use-cases/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Use Cases</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">Glossary</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700 uppercase tracking-wide">
+            Knowledge Base
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Screenshot API Glossary
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            Understand the terminology behind screenshot APIs, webpage capture, and automated image generation. Learn what these terms mean and how they relate to GetScreenshot.
+          </p>
+        </div>
+      </section>
+
+      <!-- Glossary Terms Grid -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <a href="/glossary/what-is-screenshot-api.html" class="glossary-card block p-6 bg-white rounded-xl border border-gray-200 shadow-soft transition-all">
+              <h2 class="text-xl font-bold text-gray-900 mb-2">What is a Screenshot API?</h2>
+              <p class="text-gray-500">An introduction to screenshot APIs and how they work to capture website images programmatically.</p>
+              <span class="inline-flex items-center mt-4 text-red-600 font-medium">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+
+            <a href="/glossary/url-to-image.html" class="glossary-card block p-6 bg-white rounded-xl border border-gray-200 shadow-soft transition-all">
+              <h2 class="text-xl font-bold text-gray-900 mb-2">URL to Image</h2>
+              <p class="text-gray-500">Convert any web URL into an image file. Understand URL to image conversion and its applications.</p>
+              <span class="inline-flex items-center mt-4 text-red-600 font-medium">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+
+            <a href="/glossary/website-thumbnail-generator.html" class="glossary-card block p-6 bg-white rounded-xl border border-gray-200 shadow-soft transition-all">
+              <h2 class="text-xl font-bold text-gray-900 mb-2">Website Thumbnail Generator</h2>
+              <p class="text-gray-500">Generate preview thumbnails of websites at various sizes for link previews, galleries, and more.</p>
+              <span class="inline-flex items-center mt-4 text-red-600 font-medium">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+
+            <a href="/glossary/webpage-capture-service.html" class="glossary-card block p-6 bg-white rounded-xl border border-gray-200 shadow-soft transition-all">
+              <h2 class="text-xl font-bold text-gray-900 mb-2">Webpage Capture Service</h2>
+              <p class="text-gray-500">Services that capture and render web pages as images or PDFs for archival, testing, and documentation.</p>
+              <span class="inline-flex items-center mt-4 text-red-600 font-medium">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+
+            <a href="/glossary/headless-browser-screenshot.html" class="glossary-card block p-6 bg-white rounded-xl border border-gray-200 shadow-soft transition-all">
+              <h2 class="text-xl font-bold text-gray-900 mb-2">Headless Browser Screenshot</h2>
+              <p class="text-gray-500">How headless browsers like Chrome enable screenshot APIs to capture JavaScript-rendered content.</p>
+              <span class="inline-flex items-center mt-4 text-red-600 font-medium">
+                Learn more
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Resources -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">Related Resources</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <a href="/features/" class="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+              <h3 class="font-semibold text-gray-900">Features</h3>
+              <p class="text-gray-500 text-sm mt-2">Explore GetScreenshot's full feature set.</p>
+            </a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+              <h3 class="font-semibold text-gray-900">Documentation</h3>
+              <p class="text-gray-500 text-sm mt-2">Technical guides and API reference.</p>
+            </a>
+            <a href="/compare/" class="block p-6 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+              <h3 class="font-semibold text-gray-900">Compare</h3>
+              <p class="text-gray-500 text-sm mt-2">See how GetScreenshot compares to alternatives.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Ready to Try GetScreenshot?</h2>
+          <p class="mt-4 text-red-100 text-lg">Start capturing screenshots programmatically today.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              View Pricing
+            </a>
+            <a href="/#live-demo" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              Try Live Demo
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/use-cases/" class="text-base text-gray-500 hover:text-gray-900">Use Cases</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

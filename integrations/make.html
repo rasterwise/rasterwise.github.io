@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Make.com Screenshot Integration - Automate Screenshots in Make | GetScreenshot</title>
+    <meta name="description" content="Capture website screenshots in Make.com scenarios. 6 powerful modules for full-page screenshots, element capture, PDF generation & email delivery. No coding required." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/integrations/make.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/integrations/make.html" />
+    <meta property="og:title" content="Make.com Screenshot Integration - GetScreenshot" />
+    <meta property="og:description" content="Automate website screenshots in Make.com. 6 modules for full-page capture, element screenshots, and PDF generation." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/integrations/make.html" />
+    <meta property="twitter:title" content="Make.com Screenshot Integration - GetScreenshot" />
+    <meta property="twitter:description" content="Automate website screenshots in Make.com with GetScreenshot." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .btn-make {
+        background: #6D00CC;
+        transition: all 0.2s ease;
+      }
+      .btn-make:hover {
+        background: #5800A8;
+        transform: translateY(-1px);
+      }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+      .module-card {
+        transition: all 0.2s ease;
+      }
+      .module-card:hover {
+        border-color: #6D00CC;
+        box-shadow: 0 4px 12px rgba(109, 0, 204, 0.15);
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Take Screenshots in Make.com",
+      "description": "Learn how to automate website screenshots using GetScreenshot's Make.com integration with 6 powerful modules.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Get your API key",
+          "text": "Sign up for GetScreenshot Hamilton plan or higher to get your API key with Make.com access."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Add GetScreenshot to your scenario",
+          "text": "In Make.com, create a new scenario and search for GetScreenshot. Add any of the 6 available modules."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Create a connection",
+          "text": "Click Create a connection and paste your API key to authenticate."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Configure screenshot options",
+          "text": "Enter the URL to capture and configure options like viewport size, full page, format, and advanced settings."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Use the screenshot output",
+          "text": "The screenshot URL is returned and can be used in subsequent modules in your scenario."
+        }
+      ]
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-red-600 transition-colors duration-200">Integrations</a>
+            <a href="/use-cases/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Use Cases</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="/integrations/" class="text-gray-500 hover:text-gray-700">Integrations</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">Make.com</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <div class="flex justify-center items-center gap-4 mb-6">
+            <img src="../images/gs-logo.svg" alt="GetScreenshot" class="h-10" />
+            <span class="text-3xl text-gray-300">+</span>
+            <svg class="h-10 w-10" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="256" height="256" rx="40" fill="#6D00CC"/>
+              <path d="M128 56L56 128L128 200L200 128L128 56Z" fill="white"/>
+              <circle cx="128" cy="128" r="24" fill="#6D00CC"/>
+            </svg>
+          </div>
+          <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Screenshot Automation for Make.com
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            Capture website screenshots in your Make.com scenarios with 6 powerful modules. Full-page capture, element screenshots, PDF generation, and email delivery.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="btn-primary px-8 py-3 rounded-md text-white font-medium text-lg">
+              Get Started - $10/mo
+            </a>
+            <a href="https://www.make.com/en/integrations/getscreenshot" target="_blank" class="btn-make px-8 py-3 rounded-md text-white font-medium text-lg">
+              View on Make.com
+            </a>
+          </div>
+          <p class="mt-4 text-sm text-gray-500">
+            Make.com integration available on Hamilton ($10/mo) and Jackson ($20/mo) plans
+          </p>
+        </div>
+      </section>
+
+      <!-- Available Modules -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">6 Powerful Modules</h2>
+            <p class="mt-4 text-lg text-gray-500">Everything you need for automated screenshot capture</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-6 bg-white rounded-xl border border-gray-200 module-card">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Take Screenshot</h3>
+              <p class="text-gray-500 mb-4">Capture a full webpage or custom viewport. Configure width, height, full-page capture, and output format (PNG, JPEG, WebP, or PDF).</p>
+              <div class="text-sm text-gray-400">Core module</div>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl border border-gray-200 module-card">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Take Screenshot + Email</h3>
+              <p class="text-gray-500 mb-4">Capture a screenshot and automatically email it to any address. Customize subject line and message body for professional delivery.</p>
+              <div class="text-sm text-gray-400">Screenshot + delivery</div>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl border border-gray-200 module-card">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Element Screenshot</h3>
+              <p class="text-gray-500 mb-4">Capture a specific element using CSS selectors. Target headers, cards, charts, or any DOM element with precision.</p>
+              <div class="text-sm text-gray-400">Precision capture</div>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl border border-gray-200 module-card">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 4H6a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-2m-4-1v8m0 0l3-3m-3 3L9 8m-5 5h2.586a1 1 0 01.707.293l2.414 2.414a1 1 0 00.707.293h3.172a1 1 0 00.707-.293l2.414-2.414a1 1 0 01.707-.293H20" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Element Screenshot + Email</h3>
+              <p class="text-gray-500 mb-4">Capture a specific element and email it directly. Perfect for automated reports of charts, dashboards, or specific UI components.</p>
+              <div class="text-sm text-gray-400">Element + delivery</div>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl border border-gray-200 module-card">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Get Usage</h3>
+              <p class="text-gray-500 mb-4">Check your API quota without using a screenshot credit. Returns screenshots used, remaining, total quota, plan name, and reset date.</p>
+              <div class="text-sm text-gray-400">Account management</div>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl border border-gray-200 module-card">
+              <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Make an API Call</h3>
+              <p class="text-gray-500 mb-4">For advanced users who need direct API access. Call any endpoint with custom URL paths, methods, query strings, headers, and body.</p>
+              <div class="text-sm text-gray-400">Advanced / custom</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">How to Set Up</h2>
+            <p class="mt-4 text-lg text-gray-500">Get screenshot automation running in minutes</p>
+          </div>
+
+          <div class="space-y-8">
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                1
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Get Your API Key</h3>
+                <p class="text-gray-500 mb-4">
+                  Sign up for a GetScreenshot Hamilton or Jackson plan. After subscribing, you'll receive an API key via email that includes Make.com access.
+                </p>
+                <a href="/#pricing" class="inline-flex items-center text-red-600 font-medium hover:text-red-700">
+                  View pricing plans
+                  <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                2
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Add GetScreenshot to Your Scenario</h3>
+                <p class="text-gray-500 mb-4">
+                  In Make.com, create a new scenario or open an existing one. Click the "+" button and search for "GetScreenshot" to add any of the 6 available modules.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                3
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Create a Connection</h3>
+                <p class="text-gray-500 mb-4">
+                  Click "Create a connection" in the module settings, paste your API key, and click Save. Your connection is now ready to use across all scenarios.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                4
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Configure Screenshot Options</h3>
+                <p class="text-gray-500 mb-4">
+                  Enter the URL you want to capture (this can come from a trigger or previous module). Configure options like viewport size, full page capture, output format, and advanced settings.
+                </p>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Available Options:</h4>
+                  <ul class="grid md:grid-cols-2 gap-2 text-sm text-gray-600">
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Full page capture
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Custom viewport size
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      PNG, JPEG, WebP, PDF
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      CSS element selectors
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Retina/high-DPI (2x, 3x)
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Email delivery
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                5
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Use the Screenshot Output</h3>
+                <p class="text-gray-500 mb-4">
+                  GetScreenshot returns a screenshot URL and metadata that you can use in subsequent modules. Save to cloud storage, add to databases, send via Slack, and more.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Advanced Settings -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Advanced Settings</h2>
+            <p class="mt-4 text-lg text-gray-500">Fine-tune your screenshots with powerful options</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="p-5 bg-white rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Device Scale Factor</h3>
+              <p class="text-sm text-gray-500">Capture 2x or 3x resolution for retina-quality screenshots. Perfect for print materials or high-resolution displays.</p>
+            </div>
+            <div class="p-5 bg-white rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Highlight Text</h3>
+              <p class="text-sm text-gray-500">Automatically highlight specific words with a yellow marker. Great for drawing attention to key content.</p>
+            </div>
+            <div class="p-5 bg-white rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Additional Wait Time</h3>
+              <p class="text-sm text-gray-500">Add extra milliseconds for slow-loading content. Ensure JavaScript, animations, and lazy-loaded images are fully rendered.</p>
+            </div>
+            <div class="p-5 bg-white rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Hide Elements</h3>
+              <p class="text-sm text-gray-500">Use CSS selectors to hide unwanted elements like ads, popups, or chat widgets (e.g., <code class="text-xs bg-gray-100 px-1 rounded">.ads, #popup</code>).</p>
+            </div>
+            <div class="p-5 bg-white rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Hide Cookie Banners</h3>
+              <p class="text-sm text-gray-500">Automatically detect and hide cookie consent dialogs for cleaner screenshots without manual configuration.</p>
+            </div>
+            <div class="p-5 bg-white rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Custom CSS & JavaScript</h3>
+              <p class="text-sm text-gray-500">Inject custom styles or run JavaScript before capture. Modify layouts, fill forms, or interact with the page.</p>
+            </div>
+            <div class="p-5 bg-white rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Wait Until Options</h3>
+              <p class="text-sm text-gray-500">Choose when to consider the page loaded: DOM ready, network idle, or strict network idle for complex SPAs.</p>
+            </div>
+            <div class="p-5 bg-white rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Webhook URL</h3>
+              <p class="text-sm text-gray-500">For long-running captures, provide a webhook URL to receive results asynchronously and avoid timeouts.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common Scenarios -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Popular Make.com Scenarios</h2>
+            <p class="mt-4 text-lg text-gray-500">Ideas to get you started with screenshot automation</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Scheduled trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Daily Competitor Monitoring</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Schedule daily screenshots of competitor websites or your own pages. Save to Google Drive or Dropbox for visual change tracking.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Schedule</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Google Drive</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Google Sheets trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Batch URL Processing</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Process URLs from a spreadsheet and capture screenshots of each. Use iteration to handle lists of any size automatically.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Google Sheets</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Iterator</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Slack trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">On-Demand Screenshot Bot</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Post a URL in Slack and automatically receive a screenshot preview. Great for quick website reviews with your team.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Slack</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Slack</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Scheduled + Email</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Dashboard Email Reports</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Capture analytics dashboards or reports and email them to stakeholders on a schedule. Use the built-in email module for one-step delivery.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Schedule</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Screenshot + Email</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Database trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Portfolio Thumbnail Generator</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                When new project URLs are added to your database, automatically capture thumbnails and attach them to the record.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Notion</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Notion</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Webhook trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Receipt & Invoice Archiving</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                When receipts or invoices are generated, capture them as PDF and archive to cloud storage for compliance and record-keeping.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Webhook</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Dropbox</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Output Data Reference -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Output Data Reference</h2>
+            <p class="mt-4 text-lg text-gray-500">Data returned by screenshot modules for use in subsequent steps</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <table class="w-full">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Field</th>
+                  <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 text-sm font-mono text-purple-600">status</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Result status: <code class="bg-gray-100 px-1 rounded">success</code> or <code class="bg-gray-100 px-1 rounded">failed</code></td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-sm font-mono text-purple-600">originUrl</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">The URL that was captured</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-sm font-mono text-purple-600">screenshotImage</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Direct URL to the captured image file</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-sm font-mono text-purple-600">pdfFile</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Direct URL to PDF (if PDF format was selected)</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-sm font-mono text-purple-600">captureDate</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Date of capture (YYYY/MM/DD)</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-sm font-mono text-purple-600">captureHour</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">Time of capture (HH:MM:SS)</td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 text-sm font-mono text-purple-600">pageStatus</td>
+                  <td class="px-6 py-4 text-sm text-gray-600">HTTP status code of the captured page</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common Device Sizes -->
+      <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Common Screen Sizes</h2>
+            <p class="mt-4 text-lg text-gray-500">Reference dimensions for popular devices</p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="p-4 bg-gray-50 rounded-lg text-center">
+              <div class="font-medium text-gray-900">iPhone 12/13/14</div>
+              <div class="text-sm text-gray-500 mt-1">390 × 844</div>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg text-center">
+              <div class="font-medium text-gray-900">iPhone SE</div>
+              <div class="text-sm text-gray-500 mt-1">375 × 667</div>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg text-center">
+              <div class="font-medium text-gray-900">iPad</div>
+              <div class="text-sm text-gray-500 mt-1">768 × 1024</div>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg text-center">
+              <div class="font-medium text-gray-900">iPad Pro</div>
+              <div class="text-sm text-gray-500 mt-1">1024 × 1366</div>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg text-center">
+              <div class="font-medium text-gray-900">Laptop</div>
+              <div class="text-sm text-gray-500 mt-1">1366 × 768</div>
+            </div>
+            <div class="p-4 bg-gray-50 rounded-lg text-center">
+              <div class="font-medium text-gray-900">Desktop</div>
+              <div class="text-sm text-gray-500 mt-1">1920 × 1080</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Troubleshooting -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Troubleshooting</h2>
+            <p class="mt-4 text-lg text-gray-500">Common issues and how to resolve them</p>
+          </div>
+
+          <div class="space-y-6">
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">"Invalid API key" error</h3>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>• Double-check your API key for typos or extra spaces</li>
+                <li>• Ensure you have a Hamilton Plan or higher (Lincoln Plan doesn't include Make.com)</li>
+                <li>• Try creating a new connection with a fresh copy of your API key</li>
+              </ul>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Screenshot is blank or incomplete</h3>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>• Increase <strong>Additional Wait Time</strong> to 5000ms or more</li>
+                <li>• Try a different <strong>Wait Until</strong> setting (Network Idle or Strict)</li>
+                <li>• Enable <strong>Scroll Page First</strong> to trigger lazy-loaded images</li>
+              </ul>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Cookie banners still showing</h3>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>• Enable <strong>Hide Cookie Banners</strong> in Advanced settings</li>
+                <li>• Add specific selectors to <strong>Hide Elements</strong> (e.g., <code class="bg-gray-100 px-1 rounded text-xs">.cookie-banner, #consent-popup</code>)</li>
+              </ul>
+            </div>
+            <div class="bg-white p-6 rounded-lg border border-gray-200">
+              <h3 class="font-semibold text-gray-900 mb-2">Timeout errors on complex pages</h3>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li>• Use the <strong>Webhook URL</strong> option for async delivery</li>
+                <li>• Add a Webhooks module to your scenario to receive results</li>
+                <li>• Reduce wait times or page complexity if possible</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Ready to Automate Screenshots with Make.com?</h2>
+          <p class="mt-4 text-red-100 text-lg">Get started with the Hamilton plan for $10/month. Includes 6,000 screenshots and full Make.com access.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              Get API Key - $10/mo
+            </a>
+            <a href="https://www.make.com/en/integrations/getscreenshot" target="_blank" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              View on Make.com
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/use-cases/" class="text-base text-gray-500 hover:text-gray-900">Use Cases</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

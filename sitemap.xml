@@ -4,19 +4,287 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
+<!-- Homepage -->
 <url>
   <loc>https://www.getscreenshotapi.com/</loc>
-  <lastmod>2022-01-20T01:29:38+00:00</lastmod>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>weekly</changefreq>
   <priority>1.00</priority>
 </url>
+
+<!-- Features Hub -->
 <url>
-  <loc>https://www.getscreenshotapi.com/account</loc>
-  <lastmod>2022-01-20T01:29:38+00:00</lastmod>
+  <loc>https://www.getscreenshotapi.com/features/</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.90</priority>
+</url>
+
+<!-- Feature Pages -->
+<url>
+  <loc>https://www.getscreenshotapi.com/features/full-page-screenshots.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/features/pdf-generation.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/features/webhook-integration.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/features/custom-css-javascript.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/features/element-targeting.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/features/keyword-highlighting.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/features/screenshot-to-email.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/features/viewport-control.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/features/hide-chat-widgets.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/features/cookie-banner-removal.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
   <priority>0.80</priority>
 </url>
 
+<!-- Integrations Hub -->
+<url>
+  <loc>https://www.getscreenshotapi.com/integrations/</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.90</priority>
+</url>
+
+<!-- Integration Pages -->
+<url>
+  <loc>https://www.getscreenshotapi.com/integrations/zapier.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/integrations/n8n.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/integrations/google-sheets.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/integrations/make.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+
+<!-- Compare Hub -->
+<url>
+  <loc>https://www.getscreenshotapi.com/compare/</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.90</priority>
+</url>
+
+<!-- Comparison Pages -->
+<url>
+  <loc>https://www.getscreenshotapi.com/compare/screenshot-api-alternatives.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/compare/vs-screenshotlayer.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/compare/vs-urlbox.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/compare/vs-apiflash.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/compare/vs-screenshotmachine.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/compare/vs-browshot.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/compare/affordable-screenshot-api.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+
+<!-- Use Cases Hub -->
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.90</priority>
+</url>
+
+<!-- Use Case Pages -->
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/social-media-automation.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/website-monitoring.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/competitive-analysis.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/seo-audits.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/real-estate-listings.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/ecommerce-product-shots.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/portfolio-generation.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/legal-documentation.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/archival-compliance.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/use-cases/reporting-dashboards.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+
+<!-- Glossary Hub -->
+<url>
+  <loc>https://www.getscreenshotapi.com/glossary/</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.90</priority>
+</url>
+
+<!-- Glossary Pages -->
+<url>
+  <loc>https://www.getscreenshotapi.com/glossary/what-is-screenshot-api.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/glossary/url-to-image.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/glossary/website-thumbnail-generator.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/glossary/webpage-capture-service.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.getscreenshotapi.com/glossary/headless-browser-screenshot.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
+
+<!-- API Resources -->
+<url>
+  <loc>https://www.getscreenshotapi.com/api/examples.html</loc>
+  <lastmod>2026-01-18</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
+</url>
 
 </urlset>

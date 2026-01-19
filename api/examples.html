@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Screenshot API Code Examples - cURL, JavaScript, Python, PHP | GetScreenshot</title>
+    <meta name="description" content="Ready-to-use code examples for GetScreenshot API. Copy-paste examples in cURL, JavaScript, Python, PHP, Ruby, and Go for basic screenshots, full-page capture, PDFs, and more." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/api/examples.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/api/examples.html" />
+    <meta property="og:title" content="Screenshot API Code Examples - GetScreenshot" />
+    <meta property="og:description" content="Ready-to-use code examples in cURL, JavaScript, Python, PHP, Ruby, and Go for website screenshots." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/api/examples.html" />
+    <meta property="twitter:title" content="Screenshot API Code Examples - GetScreenshot" />
+    <meta property="twitter:description" content="Ready-to-use code examples in multiple languages for website screenshots." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .code-block {
+        background: #1f2937;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      .code-block pre {
+        margin: 0;
+        padding: 1rem;
+      }
+      .code-block code {
+        color: #e5e7eb;
+        font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+      .code-block .comment { color: #6b7280; }
+      .code-block .string { color: #34d399; }
+      .code-block .keyword { color: #f472b6; }
+      .code-block .function { color: #60a5fa; }
+      .code-block .param { color: #fbbf24; }
+      .code-block .number { color: #c084fc; }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+      .tab-btn {
+        transition: all 0.15s ease;
+      }
+      .tab-btn.active {
+        background-color: #1f2937;
+        color: white;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .copy-btn {
+        transition: all 0.15s ease;
+      }
+      .copy-btn:hover {
+        background-color: #374151;
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Screenshot API Code Examples",
+      "description": "Ready-to-use code examples for GetScreenshot API in cURL, JavaScript, Python, PHP, Ruby, and Go.",
+      "author": {
+        "@type": "Organization",
+        "name": "GetScreenshot"
+      },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "GetScreenshot API",
+        "applicationCategory": "DeveloperApplication"
+      }
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Integrations</a>
+            <a href="/use-cases/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Use Cases</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-red-600 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="https://docs.rasterwise.com" class="text-gray-500 hover:text-gray-700">API Docs</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">Code Examples</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700 uppercase tracking-wide">
+            Developer Resources
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Screenshot API Code Examples
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            Copy-paste ready code examples in cURL, JavaScript, Python, PHP, Ruby, and Go. Get started capturing screenshots in minutes.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="btn-primary px-8 py-3 rounded-md text-white font-medium text-lg">
+              Get API Key - From $5/mo
+            </a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="btn-secondary px-8 py-3 rounded-md font-medium border-2 border-gray-600 text-lg">
+              Full API Documentation
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Reference -->
+      <section class="py-12 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="bg-white rounded-xl border border-gray-200 p-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">API Endpoint</h2>
+            <div class="code-block">
+              <pre><code><span class="keyword">GET</span> <span class="string">https://api.rasterwise.com/v1/get-screenshot</span></code></pre>
+            </div>
+            <div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+              <div>
+                <span class="font-medium text-gray-900">apikey</span>
+                <span class="text-gray-500 ml-1">(required)</span>
+              </div>
+              <div>
+                <span class="font-medium text-gray-900">url</span>
+                <span class="text-gray-500 ml-1">(required)</span>
+              </div>
+              <div>
+                <span class="font-medium text-gray-900">width</span>
+                <span class="text-gray-500 ml-1">(optional)</span>
+              </div>
+              <div>
+                <span class="font-medium text-gray-900">fullpage</span>
+                <span class="text-gray-500 ml-1">(optional)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Basic Screenshot -->
+      <section id="basic" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Basic Screenshot</h2>
+          <p class="text-gray-500 mb-6">The simplest API call - just provide your API key and the URL to capture.</p>
+
+          <div class="code-tabs">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="tab-btn active px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="basic-curl">cURL</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="basic-js">JavaScript</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="basic-python">Python</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="basic-php">PHP</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="basic-ruby">Ruby</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="basic-go">Go</button>
+            </div>
+
+            <div id="basic-curl" class="tab-content active">
+              <div class="code-block">
+                <pre><code>curl -G "https://api.rasterwise.com/v1/get-screenshot" \
+  --data-urlencode "apikey=YOUR_API_KEY" \
+  --data-urlencode "url=https://example.com"</code></pre>
+              </div>
+            </div>
+
+            <div id="basic-js" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="keyword">const</span> apiKey = <span class="string">'YOUR_API_KEY'</span>;
+<span class="keyword">const</span> targetUrl = <span class="string">'https://example.com'</span>;
+
+<span class="keyword">const</span> params = <span class="keyword">new</span> URLSearchParams({
+  apikey: apiKey,
+  url: targetUrl
+});
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+  <span class="string">`https://api.rasterwise.com/v1/get-screenshot?</span><span class="keyword">${</span>params<span class="keyword">}</span><span class="string">`</span>
+);
+
+<span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+console.<span class="function">log</span>(data.screenshotImage); <span class="comment">// URL to screenshot</span></code></pre>
+              </div>
+            </div>
+
+            <div id="basic-python" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="keyword">import</span> requests
+
+api_key = <span class="string">'YOUR_API_KEY'</span>
+target_url = <span class="string">'https://example.com'</span>
+
+response = requests.<span class="function">get</span>(
+    <span class="string">'https://api.rasterwise.com/v1/get-screenshot'</span>,
+    params={
+        <span class="string">'apikey'</span>: api_key,
+        <span class="string">'url'</span>: target_url
+    }
+)
+
+data = response.<span class="function">json</span>()
+<span class="function">print</span>(data[<span class="string">'screenshotImage'</span>])  <span class="comment"># URL to screenshot</span></code></pre>
+              </div>
+            </div>
+
+            <div id="basic-php" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="keyword">&lt;?php</span>
+<span class="param">$apiKey</span> = <span class="string">'YOUR_API_KEY'</span>;
+<span class="param">$targetUrl</span> = <span class="string">'https://example.com'</span>;
+
+<span class="param">$params</span> = <span class="function">http_build_query</span>([
+    <span class="string">'apikey'</span> => <span class="param">$apiKey</span>,
+    <span class="string">'url'</span> => <span class="param">$targetUrl</span>
+]);
+
+<span class="param">$response</span> = <span class="function">file_get_contents</span>(
+    <span class="string">"https://api.rasterwise.com/v1/get-screenshot?{<span class="param">$params</span>}"</span>
+);
+
+<span class="param">$data</span> = <span class="function">json_decode</span>(<span class="param">$response</span>, <span class="keyword">true</span>);
+<span class="keyword">echo</span> <span class="param">$data</span>[<span class="string">'screenshotImage'</span>]; <span class="comment">// URL to screenshot</span></code></pre>
+              </div>
+            </div>
+
+            <div id="basic-ruby" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="keyword">require</span> <span class="string">'net/http'</span>
+<span class="keyword">require</span> <span class="string">'json'</span>
+<span class="keyword">require</span> <span class="string">'uri'</span>
+
+api_key = <span class="string">'YOUR_API_KEY'</span>
+target_url = <span class="string">'https://example.com'</span>
+
+uri = URI(<span class="string">'https://api.rasterwise.com/v1/get-screenshot'</span>)
+uri.query = URI.<span class="function">encode_www_form</span>({
+  apikey: api_key,
+  url: target_url
+})
+
+response = Net::HTTP.<span class="function">get</span>(uri)
+data = JSON.<span class="function">parse</span>(response)
+<span class="function">puts</span> data[<span class="string">'screenshotImage'</span>] <span class="comment"># URL to screenshot</span></code></pre>
+              </div>
+            </div>
+
+            <div id="basic-go" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="keyword">package</span> main
+
+<span class="keyword">import</span> (
+    <span class="string">"encoding/json"</span>
+    <span class="string">"fmt"</span>
+    <span class="string">"net/http"</span>
+    <span class="string">"net/url"</span>
+)
+
+<span class="keyword">func</span> <span class="function">main</span>() {
+    apiKey := <span class="string">"YOUR_API_KEY"</span>
+    targetUrl := <span class="string">"https://example.com"</span>
+
+    params := url.Values{}
+    params.<span class="function">Add</span>(<span class="string">"apikey"</span>, apiKey)
+    params.<span class="function">Add</span>(<span class="string">"url"</span>, targetUrl)
+
+    resp, _ := http.<span class="function">Get</span>(
+        <span class="string">"https://api.rasterwise.com/v1/get-screenshot?"</span> + params.<span class="function">Encode</span>(),
+    )
+    <span class="keyword">defer</span> resp.Body.<span class="function">Close</span>()
+
+    <span class="keyword">var</span> data <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">interface</span>{}
+    json.<span class="function">NewDecoder</span>(resp.Body).<span class="function">Decode</span>(&data)
+    fmt.<span class="function">Println</span>(data[<span class="string">"screenshotImage"</span>])
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Full Page Screenshot -->
+      <section id="fullpage" class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Full Page Screenshot</h2>
+          <p class="text-gray-500 mb-6">Capture the entire scrollable length of a webpage with <code class="bg-gray-200 px-1 rounded">fullpage=true</code>.</p>
+
+          <div class="code-tabs">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="tab-btn active px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="fullpage-curl">cURL</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="fullpage-js">JavaScript</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="fullpage-python">Python</button>
+            </div>
+
+            <div id="fullpage-curl" class="tab-content active">
+              <div class="code-block">
+                <pre><code>curl -G "https://api.rasterwise.com/v1/get-screenshot" \
+  --data-urlencode "apikey=YOUR_API_KEY" \
+  --data-urlencode "url=https://example.com/long-page" \
+  --data-urlencode "fullpage=true" \
+  --data-urlencode "width=1280"</code></pre>
+              </div>
+            </div>
+
+            <div id="fullpage-js" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="keyword">const</span> params = <span class="keyword">new</span> URLSearchParams({
+  apikey: <span class="string">'YOUR_API_KEY'</span>,
+  url: <span class="string">'https://example.com/long-page'</span>,
+  fullpage: <span class="string">'true'</span>,
+  width: <span class="string">'1280'</span>
+});
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+  <span class="string">`https://api.rasterwise.com/v1/get-screenshot?</span><span class="keyword">${</span>params<span class="keyword">}</span><span class="string">`</span>
+);
+
+<span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+<span class="comment">// data.screenshotImage contains the full page screenshot</span></code></pre>
+              </div>
+            </div>
+
+            <div id="fullpage-python" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="keyword">import</span> requests
+
+response = requests.<span class="function">get</span>(
+    <span class="string">'https://api.rasterwise.com/v1/get-screenshot'</span>,
+    params={
+        <span class="string">'apikey'</span>: <span class="string">'YOUR_API_KEY'</span>,
+        <span class="string">'url'</span>: <span class="string">'https://example.com/long-page'</span>,
+        <span class="string">'fullpage'</span>: <span class="string">'true'</span>,
+        <span class="string">'width'</span>: <span class="string">'1280'</span>
+    }
+)
+
+data = response.<span class="function">json</span>()
+<span class="comment"># data['screenshotImage'] contains the full page screenshot</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PDF Generation -->
+      <section id="pdf" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">PDF Generation</h2>
+          <p class="text-gray-500 mb-6">Generate a PDF document from any webpage with <code class="bg-gray-200 px-1 rounded">format=pdf</code>.</p>
+
+          <div class="code-tabs">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="tab-btn active px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="pdf-curl">cURL</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="pdf-js">JavaScript</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="pdf-python">Python</button>
+            </div>
+
+            <div id="pdf-curl" class="tab-content active">
+              <div class="code-block">
+                <pre><code>curl -G "https://api.rasterwise.com/v1/get-screenshot" \
+  --data-urlencode "apikey=YOUR_API_KEY" \
+  --data-urlencode "url=https://example.com/article" \
+  --data-urlencode "format=pdf" \
+  --data-urlencode "pdfFormat=A4"</code></pre>
+              </div>
+            </div>
+
+            <div id="pdf-js" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="keyword">const</span> params = <span class="keyword">new</span> URLSearchParams({
+  apikey: <span class="string">'YOUR_API_KEY'</span>,
+  url: <span class="string">'https://example.com/article'</span>,
+  format: <span class="string">'pdf'</span>,
+  pdfFormat: <span class="string">'A4'</span>
+});
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+  <span class="string">`https://api.rasterwise.com/v1/get-screenshot?</span><span class="keyword">${</span>params<span class="keyword">}</span><span class="string">`</span>
+);
+
+<span class="keyword">const</span> data = <span class="keyword">await</span> response.<span class="function">json</span>();
+console.<span class="function">log</span>(data.pdfFile); <span class="comment">// URL to PDF file</span></code></pre>
+              </div>
+            </div>
+
+            <div id="pdf-python" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="keyword">import</span> requests
+
+response = requests.<span class="function">get</span>(
+    <span class="string">'https://api.rasterwise.com/v1/get-screenshot'</span>,
+    params={
+        <span class="string">'apikey'</span>: <span class="string">'YOUR_API_KEY'</span>,
+        <span class="string">'url'</span>: <span class="string">'https://example.com/article'</span>,
+        <span class="string">'format'</span>: <span class="string">'pdf'</span>,
+        <span class="string">'pdfFormat'</span>: <span class="string">'A4'</span>
+    }
+)
+
+data = response.<span class="function">json</span>()
+<span class="function">print</span>(data[<span class="string">'pdfFile'</span>])  <span class="comment"># URL to PDF file</span></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Custom Viewport -->
+      <section id="viewport" class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Custom Viewport Size</h2>
+          <p class="text-gray-500 mb-6">Capture mobile, tablet, or custom dimensions with <code class="bg-gray-200 px-1 rounded">width</code> and <code class="bg-gray-200 px-1 rounded">height</code>.</p>
+
+          <div class="code-tabs">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="tab-btn active px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="viewport-curl">cURL</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="viewport-js">JavaScript</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="viewport-python">Python</button>
+            </div>
+
+            <div id="viewport-curl" class="tab-content active">
+              <div class="code-block">
+                <pre><code><span class="comment"># iPhone 14 viewport</span>
+curl -G "https://api.rasterwise.com/v1/get-screenshot" \
+  --data-urlencode "apikey=YOUR_API_KEY" \
+  --data-urlencode "url=https://example.com" \
+  --data-urlencode "width=390" \
+  --data-urlencode "height=844" \
+  --data-urlencode "deviceScaleFactor=3"</code></pre>
+              </div>
+            </div>
+
+            <div id="viewport-js" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="comment">// iPhone 14 viewport</span>
+<span class="keyword">const</span> params = <span class="keyword">new</span> URLSearchParams({
+  apikey: <span class="string">'YOUR_API_KEY'</span>,
+  url: <span class="string">'https://example.com'</span>,
+  width: <span class="string">'390'</span>,
+  height: <span class="string">'844'</span>,
+  deviceScaleFactor: <span class="string">'3'</span>  <span class="comment">// Retina 3x</span>
+});
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+  <span class="string">`https://api.rasterwise.com/v1/get-screenshot?</span><span class="keyword">${</span>params<span class="keyword">}</span><span class="string">`</span>
+);</code></pre>
+              </div>
+            </div>
+
+            <div id="viewport-python" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="comment"># iPhone 14 viewport</span>
+<span class="keyword">import</span> requests
+
+response = requests.<span class="function">get</span>(
+    <span class="string">'https://api.rasterwise.com/v1/get-screenshot'</span>,
+    params={
+        <span class="string">'apikey'</span>: <span class="string">'YOUR_API_KEY'</span>,
+        <span class="string">'url'</span>: <span class="string">'https://example.com'</span>,
+        <span class="string">'width'</span>: <span class="string">'390'</span>,
+        <span class="string">'height'</span>: <span class="string">'844'</span>,
+        <span class="string">'deviceScaleFactor'</span>: <span class="string">'3'</span>  <span class="comment"># Retina 3x</span>
+    }
+)</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded-lg border border-gray-200">
+              <div class="font-medium text-gray-900">iPhone 14</div>
+              <div class="text-sm text-gray-500">390 x 844, scale 3x</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg border border-gray-200">
+              <div class="font-medium text-gray-900">iPad Pro</div>
+              <div class="text-sm text-gray-500">1024 x 1366, scale 2x</div>
+            </div>
+            <div class="bg-white p-4 rounded-lg border border-gray-200">
+              <div class="font-medium text-gray-900">Desktop HD</div>
+              <div class="text-sm text-gray-500">1920 x 1080, scale 1x</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Element Screenshot -->
+      <section id="element" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Element Screenshot</h2>
+          <p class="text-gray-500 mb-6">Capture a specific element using CSS selector with <code class="bg-gray-200 px-1 rounded">selector</code>.</p>
+
+          <div class="code-tabs">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="tab-btn active px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="element-curl">cURL</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="element-js">JavaScript</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="element-python">Python</button>
+            </div>
+
+            <div id="element-curl" class="tab-content active">
+              <div class="code-block">
+                <pre><code><span class="comment"># Capture just the main article content</span>
+curl -G "https://api.rasterwise.com/v1/get-screenshot" \
+  --data-urlencode "apikey=YOUR_API_KEY" \
+  --data-urlencode "url=https://example.com/blog-post" \
+  --data-urlencode "selector=article.main-content"</code></pre>
+              </div>
+            </div>
+
+            <div id="element-js" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="comment">// Capture just the main article content</span>
+<span class="keyword">const</span> params = <span class="keyword">new</span> URLSearchParams({
+  apikey: <span class="string">'YOUR_API_KEY'</span>,
+  url: <span class="string">'https://example.com/blog-post'</span>,
+  selector: <span class="string">'article.main-content'</span>
+});
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+  <span class="string">`https://api.rasterwise.com/v1/get-screenshot?</span><span class="keyword">${</span>params<span class="keyword">}</span><span class="string">`</span>
+);</code></pre>
+              </div>
+            </div>
+
+            <div id="element-python" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="comment"># Capture just the main article content</span>
+<span class="keyword">import</span> requests
+
+response = requests.<span class="function">get</span>(
+    <span class="string">'https://api.rasterwise.com/v1/get-screenshot'</span>,
+    params={
+        <span class="string">'apikey'</span>: <span class="string">'YOUR_API_KEY'</span>,
+        <span class="string">'url'</span>: <span class="string">'https://example.com/blog-post'</span>,
+        <span class="string">'selector'</span>: <span class="string">'article.main-content'</span>
+    }
+)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hide Elements -->
+      <section id="hide" class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Hide Elements</h2>
+          <p class="text-gray-500 mb-6">Remove unwanted elements like ads, popups, or chat widgets with <code class="bg-gray-200 px-1 rounded">hideSelector</code>.</p>
+
+          <div class="code-tabs">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="tab-btn active px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="hide-curl">cURL</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="hide-js">JavaScript</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="hide-python">Python</button>
+            </div>
+
+            <div id="hide-curl" class="tab-content active">
+              <div class="code-block">
+                <pre><code><span class="comment"># Hide ads, popups, and chat widgets</span>
+curl -G "https://api.rasterwise.com/v1/get-screenshot" \
+  --data-urlencode "apikey=YOUR_API_KEY" \
+  --data-urlencode "url=https://example.com" \
+  --data-urlencode "hideSelector=.ads, #popup, .chat-widget, .cookie-banner" \
+  --data-urlencode "hideCookieBanners=true"</code></pre>
+              </div>
+            </div>
+
+            <div id="hide-js" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="comment">// Hide ads, popups, and chat widgets</span>
+<span class="keyword">const</span> params = <span class="keyword">new</span> URLSearchParams({
+  apikey: <span class="string">'YOUR_API_KEY'</span>,
+  url: <span class="string">'https://example.com'</span>,
+  hideSelector: <span class="string">'.ads, #popup, .chat-widget, .cookie-banner'</span>,
+  hideCookieBanners: <span class="string">'true'</span>
+});
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+  <span class="string">`https://api.rasterwise.com/v1/get-screenshot?</span><span class="keyword">${</span>params<span class="keyword">}</span><span class="string">`</span>
+);</code></pre>
+              </div>
+            </div>
+
+            <div id="hide-python" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="comment"># Hide ads, popups, and chat widgets</span>
+<span class="keyword">import</span> requests
+
+response = requests.<span class="function">get</span>(
+    <span class="string">'https://api.rasterwise.com/v1/get-screenshot'</span>,
+    params={
+        <span class="string">'apikey'</span>: <span class="string">'YOUR_API_KEY'</span>,
+        <span class="string">'url'</span>: <span class="string">'https://example.com'</span>,
+        <span class="string">'hideSelector'</span>: <span class="string">'.ads, #popup, .chat-widget, .cookie-banner'</span>,
+        <span class="string">'hideCookieBanners'</span>: <span class="string">'true'</span>
+    }
+)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Custom JavaScript -->
+      <section id="javascript" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Custom JavaScript Injection</h2>
+          <p class="text-gray-500 mb-6">Run JavaScript before capturing with <code class="bg-gray-200 px-1 rounded">js</code> parameter. Perfect for interacting with the page.</p>
+
+          <div class="code-tabs">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="tab-btn active px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="js-curl">cURL</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="js-js">JavaScript</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="js-python">Python</button>
+            </div>
+
+            <div id="js-curl" class="tab-content active">
+              <div class="code-block">
+                <pre><code><span class="comment"># Click "Accept cookies" and expand collapsed sections</span>
+curl -G "https://api.rasterwise.com/v1/get-screenshot" \
+  --data-urlencode "apikey=YOUR_API_KEY" \
+  --data-urlencode "url=https://example.com" \
+  --data-urlencode "js=document.querySelector('.accept-cookies')?.click(); document.querySelectorAll('.expand-btn').forEach(b => b.click());" \
+  --data-urlencode "waitTime=2000"</code></pre>
+              </div>
+            </div>
+
+            <div id="js-js" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="comment">// Click "Accept cookies" and expand collapsed sections</span>
+<span class="keyword">const</span> customJs = <span class="string">`
+  document.querySelector('.accept-cookies')?.click();
+  document.querySelectorAll('.expand-btn').forEach(b => b.click());
+`</span>;
+
+<span class="keyword">const</span> params = <span class="keyword">new</span> URLSearchParams({
+  apikey: <span class="string">'YOUR_API_KEY'</span>,
+  url: <span class="string">'https://example.com'</span>,
+  js: customJs,
+  waitTime: <span class="string">'2000'</span>  <span class="comment">// Wait 2s for animations</span>
+});
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+  <span class="string">`https://api.rasterwise.com/v1/get-screenshot?</span><span class="keyword">${</span>params<span class="keyword">}</span><span class="string">`</span>
+);</code></pre>
+              </div>
+            </div>
+
+            <div id="js-python" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="comment"># Click "Accept cookies" and expand collapsed sections</span>
+<span class="keyword">import</span> requests
+
+custom_js = <span class="string">"""
+document.querySelector('.accept-cookies')?.click();
+document.querySelectorAll('.expand-btn').forEach(b => b.click());
+"""</span>
+
+response = requests.<span class="function">get</span>(
+    <span class="string">'https://api.rasterwise.com/v1/get-screenshot'</span>,
+    params={
+        <span class="string">'apikey'</span>: <span class="string">'YOUR_API_KEY'</span>,
+        <span class="string">'url'</span>: <span class="string">'https://example.com'</span>,
+        <span class="string">'js'</span>: custom_js,
+        <span class="string">'waitTime'</span>: <span class="string">'2000'</span>  <span class="comment"># Wait 2s for animations</span>
+    }
+)</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Wait Options -->
+      <section id="wait" class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">Wait Options</h2>
+          <p class="text-gray-500 mb-6">Control when to capture with <code class="bg-gray-200 px-1 rounded">waitUntil</code> and <code class="bg-gray-200 px-1 rounded">waitTime</code>.</p>
+
+          <div class="code-tabs">
+            <div class="flex flex-wrap gap-2 mb-4">
+              <button class="tab-btn active px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="wait-curl">cURL</button>
+              <button class="tab-btn px-4 py-2 rounded-md text-sm font-medium text-gray-600 bg-gray-100" data-tab="wait-js">JavaScript</button>
+            </div>
+
+            <div id="wait-curl" class="tab-content active">
+              <div class="code-block">
+                <pre><code><span class="comment"># Wait for network to be completely idle, plus 3 extra seconds</span>
+curl -G "https://api.rasterwise.com/v1/get-screenshot" \
+  --data-urlencode "apikey=YOUR_API_KEY" \
+  --data-urlencode "url=https://example.com/dashboard" \
+  --data-urlencode "waitUntil=networkidle0" \
+  --data-urlencode "waitTime=3000"</code></pre>
+              </div>
+            </div>
+
+            <div id="wait-js" class="tab-content">
+              <div class="code-block">
+                <pre><code><span class="comment">// Wait for network to be completely idle, plus 3 extra seconds</span>
+<span class="keyword">const</span> params = <span class="keyword">new</span> URLSearchParams({
+  apikey: <span class="string">'YOUR_API_KEY'</span>,
+  url: <span class="string">'https://example.com/dashboard'</span>,
+  waitUntil: <span class="string">'networkidle0'</span>,  <span class="comment">// Or: networkidle2, domcontentloaded, load</span>
+  waitTime: <span class="string">'3000'</span>  <span class="comment">// Additional 3s wait</span>
+});
+
+<span class="keyword">const</span> response = <span class="keyword">await</span> <span class="function">fetch</span>(
+  <span class="string">`https://api.rasterwise.com/v1/get-screenshot?</span><span class="keyword">${</span>params<span class="keyword">}</span><span class="string">`</span>
+);</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 bg-white rounded-lg border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left font-medium text-gray-900">waitUntil Value</th>
+                  <th class="px-4 py-3 text-left font-medium text-gray-900">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">load</td>
+                  <td class="px-4 py-3 text-gray-600">Wait for load event (default)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">domcontentloaded</td>
+                  <td class="px-4 py-3 text-gray-600">Wait for DOMContentLoaded event</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">networkidle2</td>
+                  <td class="px-4 py-3 text-gray-600">Wait until fewer than 2 network connections for 500ms</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">networkidle0</td>
+                  <td class="px-4 py-3 text-gray-600">Wait until no network connections for 500ms (strictest)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Parameters Reference -->
+      <section class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">API Parameters Reference</h2>
+            <p class="mt-4 text-lg text-gray-500">Complete list of available parameters</p>
+          </div>
+
+          <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <table class="w-full text-sm">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-4 py-3 text-left font-medium text-gray-900">Parameter</th>
+                  <th class="px-4 py-3 text-left font-medium text-gray-900">Type</th>
+                  <th class="px-4 py-3 text-left font-medium text-gray-900">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">apikey</td>
+                  <td class="px-4 py-3 text-gray-500">string</td>
+                  <td class="px-4 py-3 text-gray-600">Your API key <span class="text-red-600">(required)</span></td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">url</td>
+                  <td class="px-4 py-3 text-gray-500">string</td>
+                  <td class="px-4 py-3 text-gray-600">URL to capture <span class="text-red-600">(required)</span></td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">width</td>
+                  <td class="px-4 py-3 text-gray-500">number</td>
+                  <td class="px-4 py-3 text-gray-600">Viewport width in pixels (default: 1280)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">height</td>
+                  <td class="px-4 py-3 text-gray-500">number</td>
+                  <td class="px-4 py-3 text-gray-600">Viewport height in pixels (default: 800)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">fullpage</td>
+                  <td class="px-4 py-3 text-gray-500">boolean</td>
+                  <td class="px-4 py-3 text-gray-600">Capture entire scrollable page</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">format</td>
+                  <td class="px-4 py-3 text-gray-500">string</td>
+                  <td class="px-4 py-3 text-gray-600">Output format: png, jpeg, webp, pdf</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">selector</td>
+                  <td class="px-4 py-3 text-gray-500">string</td>
+                  <td class="px-4 py-3 text-gray-600">CSS selector for element screenshot</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">hideSelector</td>
+                  <td class="px-4 py-3 text-gray-500">string</td>
+                  <td class="px-4 py-3 text-gray-600">CSS selectors to hide (comma-separated)</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">hideCookieBanners</td>
+                  <td class="px-4 py-3 text-gray-500">boolean</td>
+                  <td class="px-4 py-3 text-gray-600">Auto-hide cookie consent banners</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">js</td>
+                  <td class="px-4 py-3 text-gray-500">string</td>
+                  <td class="px-4 py-3 text-gray-600">JavaScript to execute before capture</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">css</td>
+                  <td class="px-4 py-3 text-gray-500">string</td>
+                  <td class="px-4 py-3 text-gray-600">CSS to inject before capture</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">waitUntil</td>
+                  <td class="px-4 py-3 text-gray-500">string</td>
+                  <td class="px-4 py-3 text-gray-600">When to consider page loaded</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">waitTime</td>
+                  <td class="px-4 py-3 text-gray-500">number</td>
+                  <td class="px-4 py-3 text-gray-600">Additional wait time in ms</td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-mono text-red-600">deviceScaleFactor</td>
+                  <td class="px-4 py-3 text-gray-500">number</td>
+                  <td class="px-4 py-3 text-gray-600">Pixel density (1, 2, or 3 for retina)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="https://docs.rasterwise.com" target="_blank" class="inline-flex items-center text-red-600 font-medium hover:text-red-700">
+              View full API documentation
+              <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Ready to Start Capturing Screenshots?</h2>
+          <p class="mt-4 text-red-100 text-lg">Get your API key and start capturing screenshots in minutes. Plans start at $5/month with 2,500 screenshots included.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              Get API Key - From $5/mo
+            </a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              Full Documentation
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/use-cases/" class="text-base text-gray-500 hover:text-gray-900">Use Cases</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Tab switching functionality
+      document.querySelectorAll('.code-tabs').forEach(tabGroup => {
+        const tabs = tabGroup.querySelectorAll('.tab-btn');
+        const contents = tabGroup.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            const targetId = tab.dataset.tab;
+
+            // Update active states
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            contents.forEach(content => {
+              content.classList.remove('active');
+              if (content.id === targetId) {
+                content.classList.add('active');
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

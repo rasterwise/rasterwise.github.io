@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Google Sheets Screenshot Integration - Website Screenshots in Spreadsheets | GetScreenshot</title>
+    <meta name="description" content="Take website screenshots directly in Google Sheets using GetScreenshot API. Use simple formulas to capture URLs as images. Perfect for SEO tracking, competitor monitoring, and portfolio management." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/integrations/google-sheets.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/integrations/google-sheets.html" />
+    <meta property="og:title" content="Google Sheets Screenshot Integration - GetScreenshot" />
+    <meta property="og:description" content="Take website screenshots directly in Google Sheets. Use simple formulas to capture any URL as an image." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/integrations/google-sheets.html" />
+    <meta property="twitter:title" content="Google Sheets Screenshot Integration - GetScreenshot" />
+    <meta property="twitter:description" content="Take website screenshots directly in Google Sheets with GetScreenshot." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .btn-sheets {
+        background: #34a853;
+        transition: all 0.2s ease;
+      }
+      .btn-sheets:hover {
+        background: #2d8f47;
+        transform: translateY(-1px);
+      }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+      code {
+        background: #f3f4f6;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        font-family: 'Monaco', 'Menlo', monospace;
+      }
+      pre code {
+        display: block;
+        padding: 1rem;
+        overflow-x: auto;
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Take Screenshots in Google Sheets",
+      "description": "Learn how to capture website screenshots directly in Google Sheets using GetScreenshot API.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Get your API key",
+          "text": "Sign up for GetScreenshot and get your API key from your account."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Create the IMAGE formula",
+          "text": "Use the IMAGE() function with the GetScreenshot API URL to embed screenshots in cells."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Reference URLs from cells",
+          "text": "Use cell references to dynamically screenshot URLs from your spreadsheet data."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Customize screenshot options",
+          "text": "Add parameters for viewport size, full page capture, and other options."
+        }
+      ]
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-red-600 transition-colors duration-200">Integrations</a>
+            <a href="/use-cases/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Use Cases</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="/integrations/" class="text-gray-500 hover:text-gray-700">Integrations</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">Google Sheets</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <div class="flex justify-center items-center gap-4 mb-6">
+            <img src="../images/gs-logo.svg" alt="GetScreenshot" class="h-10" />
+            <span class="text-3xl text-gray-300">+</span>
+            <svg class="h-10 w-10" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M43.8 20H24.2v8.4h11.2c-1 5-5 8.4-11.2 8.4-6.8 0-12.2-5.6-12.2-12.4S17.4 12 24.2 12c3 0 5.8 1.2 8 3l6-6c-3.8-3.6-8.8-5.6-14-5.6C11.6 3.4 1.2 13.8 1.2 24.4S11.6 45.4 24.2 45.4C36.2 45.4 47 36.6 47 24.4c0-1.4-.2-3-.4-4.4h-.8z" fill="#34A853"/>
+              <path d="M6.2 14.6l7 5c1.8-4.4 6-7.6 11-7.6 3 0 5.8 1.2 8 3l6-6c-3.8-3.6-8.8-5.6-14-5.6-8 0-15 4.6-18 11.2z" fill="#EA4335"/>
+              <path d="M24.2 45.4c5 0 9.8-1.8 13.4-4.8l-6.2-5.2c-2 1.4-4.4 2.2-7.2 2.2-6.2 0-10.2-3.4-11.2-8.4l-7 5.4c3 6.6 9.6 10.8 18.2 10.8z" fill="#34A853"/>
+              <path d="M47 24.4c0-1.4-.2-3-.4-4.4H24.2v8.4h12.8c-.6 2.8-2.2 5.2-4.4 6.8l6.2 5.2c3.6-3.6 6.2-9 6.2-16z" fill="#4285F4"/>
+              <path d="M6.2 29.2l-6.8-5.4c-.2.6-.2 1.2-.2 1.8 0 2.8.6 5.4 1.8 7.8l6.8-5.4c-.4-1-.6-2-.6-3 0-.6 0-1.2.2-1.8l-.2.6z" fill="#FBBC05"/>
+            </svg>
+          </div>
+          <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Website Screenshots in Google Sheets
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            Capture website screenshots directly in your spreadsheets. Use simple formulas to turn URLs into images - perfect for SEO tracking, competitor monitoring, and portfolio management.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="btn-primary px-8 py-3 rounded-md text-white font-medium text-lg">
+              Get Started - Free Tier Available
+            </a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="btn-sheets px-8 py-3 rounded-md text-white font-medium text-lg">
+              View API Docs
+            </a>
+          </div>
+          <p class="mt-4 text-sm text-gray-500">
+            Works with any Google Sheets plan. Start with 100 free screenshots/month.
+          </p>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">How to Use Screenshots in Google Sheets</h2>
+            <p class="mt-4 text-lg text-gray-500">Two simple approaches - use what works best for you</p>
+          </div>
+
+          <div class="space-y-12">
+            <!-- Method 1: IMAGE function -->
+            <div class="bg-white rounded-xl p-8 shadow-soft">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="flex-shrink-0 w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                  1
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">Method 1: Direct IMAGE Formula</h3>
+              </div>
+
+              <p class="text-gray-600 mb-6">
+                The simplest approach - use Google Sheets' built-in IMAGE() function with the GetScreenshot API URL. The screenshot loads directly in your cell.
+              </p>
+
+              <div class="bg-gray-900 rounded-lg p-4 mb-6">
+                <p class="text-gray-400 text-sm mb-2">Formula:</p>
+                <code class="text-green-400 bg-transparent p-0">=IMAGE("https://api.getscreenshotapi.com/capture?apikey=YOUR_KEY&url="&ENCODEURL(A1))</code>
+              </div>
+
+              <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-3">Example with Options:</h4>
+                  <div class="bg-gray-900 rounded-lg p-4">
+                    <code class="text-green-400 bg-transparent p-0 text-sm block whitespace-pre-wrap">=IMAGE("https://api.getscreenshotapi.com/capture?apikey=YOUR_KEY&url="&ENCODEURL(A1)&"&width=1280&height=800&full_page=true")</code>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-3">Available Parameters:</h4>
+                  <ul class="space-y-2 text-sm text-gray-600">
+                    <li><code>width</code> - Viewport width (default: 1280)</li>
+                    <li><code>height</code> - Viewport height (default: 800)</li>
+                    <li><code>full_page</code> - Capture entire page (true/false)</li>
+                    <li><code>format</code> - Image format (png, jpg, webp)</li>
+                    <li><code>delay</code> - Wait time in ms before capture</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Method 2: Apps Script -->
+            <div class="bg-white rounded-xl p-8 shadow-soft">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="flex-shrink-0 w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                  2
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900">Method 2: Google Apps Script (Advanced)</h3>
+              </div>
+
+              <p class="text-gray-600 mb-6">
+                For more control, create a custom function using Google Apps Script. This allows batch processing, error handling, and storing screenshot URLs.
+              </p>
+
+              <div class="bg-gray-900 rounded-lg p-4 mb-6 overflow-x-auto">
+                <pre class="text-green-400 text-sm"><code>function SCREENSHOT(url, width, height) {
+  var apiKey = 'YOUR_API_KEY';
+  width = width || 1280;
+  height = height || 800;
+
+  var apiUrl = 'https://api.getscreenshotapi.com/capture'
+    + '?apikey=' + apiKey
+    + '&url=' + encodeURIComponent(url)
+    + '&width=' + width
+    + '&height=' + height;
+
+  return apiUrl;
+}</code></pre>
+              </div>
+
+              <p class="text-gray-600 mb-4">Then use in your sheet:</p>
+              <div class="bg-gray-900 rounded-lg p-4">
+                <code class="text-green-400 bg-transparent p-0">=IMAGE(SCREENSHOT(A1, 1280, 800))</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Use Cases -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Popular Google Sheets Use Cases</h2>
+            <p class="mt-4 text-lg text-gray-500">How teams use screenshots in their spreadsheets</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">SEO & Marketing</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">SERP Result Tracking</h3>
+              <p class="text-gray-500 text-sm">
+                Screenshot search results for target keywords. Track SERP changes over time with visual evidence in your SEO tracking sheets.
+              </p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Competitive Intel</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Competitor Website Monitoring</h3>
+              <p class="text-gray-500 text-sm">
+                Keep a visual log of competitor websites. List URLs in column A, get screenshots automatically. Compare changes side by side.
+              </p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Portfolio</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Client Website Portfolio</h3>
+              <p class="text-gray-500 text-sm">
+                Agencies: maintain a visual database of client websites. Track projects with live thumbnails that update automatically.
+              </p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">QA Testing</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Website QA Checklist</h3>
+              <p class="text-gray-500 text-sm">
+                Create QA spreadsheets with visual verification. Screenshot each page after deployment to confirm changes look correct.
+              </p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Real Estate</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Property Listing Database</h3>
+              <p class="text-gray-500 text-sm">
+                Screenshot property listings from real estate portals. Build a visual database of listings with thumbnails for quick reference.
+              </p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Link Building</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Backlink Verification</h3>
+              <p class="text-gray-500 text-sm">
+                Track backlinks with visual proof. Screenshot pages linking to you to verify link placement and context.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="/use-cases/" class="inline-flex items-center text-red-600 font-medium hover:text-red-700">
+              Explore more use cases
+              <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tips Section -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Tips for Best Results</h2>
+            <p class="mt-4 text-lg text-gray-500">Get the most out of screenshots in your spreadsheets</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg p-6 shadow-soft">
+              <h3 class="font-semibold text-gray-900 mb-3">Resize Cells for Better Display</h3>
+              <p class="text-gray-600 text-sm">
+                Adjust your row height and column width to display screenshots clearly. Right-click the row/column header and set specific dimensions (e.g., 200px height, 300px width).
+              </p>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-soft">
+              <h3 class="font-semibold text-gray-900 mb-3">Use ENCODEURL() for Special Characters</h3>
+              <p class="text-gray-600 text-sm">
+                Always wrap your URLs with ENCODEURL() to handle special characters, query strings, and unicode properly. This prevents formula errors.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-soft">
+              <h3 class="font-semibold text-gray-900 mb-3">Cache Screenshots with Static URLs</h3>
+              <p class="text-gray-600 text-sm">
+                For large sheets, consider using our webhook feature to capture screenshots once and store permanent URLs, rather than regenerating on each sheet load.
+              </p>
+            </div>
+
+            <div class="bg-white rounded-lg p-6 shadow-soft">
+              <h3 class="font-semibold text-gray-900 mb-3">Use Full Page for Long Content</h3>
+              <p class="text-gray-600 text-sm">
+                For articles, landing pages, or content-heavy sites, add <code>full_page=true</code> to capture the entire page, not just the viewport.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Callout -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">All Features Work in Google Sheets</h2>
+            <p class="mt-4 text-lg text-gray-500">Access the full GetScreenshot API from your formulas</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="/features/full-page-screenshots.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Full Page Capture</h3>
+              <p class="mt-2 text-sm text-gray-500">Screenshot entire pages from top to bottom.</p>
+            </a>
+
+            <a href="/features/pdf-generation.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">PDF Generation</h3>
+              <p class="mt-2 text-sm text-gray-500">Convert webpages to PDF documents.</p>
+            </a>
+
+            <a href="/features/viewport-control.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Custom Viewports</h3>
+              <p class="mt-2 text-sm text-gray-500">Set width, height, and device scale.</p>
+            </a>
+
+            <a href="/features/hide-chat-widgets.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Hide Widgets</h3>
+              <p class="mt-2 text-sm text-gray-500">Remove chat widgets and popups.</p>
+            </a>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="/features/" class="inline-flex items-center text-red-600 font-medium hover:text-red-700">
+              View all features
+              <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Other Integrations -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">More Integration Options</h2>
+            <p class="mt-4 text-lg text-gray-500">Connect GetScreenshot with your favorite tools</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <a href="/integrations/zapier.html" class="flex items-center gap-4 p-6 bg-white rounded-xl border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <img src="../images/zapier.svg" alt="Zapier" class="w-12 h-12" />
+              <div>
+                <h3 class="font-semibold text-gray-900">Zapier Integration</h3>
+                <p class="text-sm text-gray-500">Automate screenshots with 5,000+ apps</p>
+              </div>
+            </a>
+
+            <a href="/integrations/n8n.html" class="flex items-center gap-4 p-6 bg-white rounded-xl border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <img src="../images/n8n.svg" alt="n8n" class="w-12 h-12" />
+              <div>
+                <h3 class="font-semibold text-gray-900">n8n Integration</h3>
+                <p class="text-sm text-gray-500">Self-hosted workflow automation</p>
+              </div>
+            </a>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="/integrations/" class="inline-flex items-center text-red-600 font-medium hover:text-red-700">
+              View all integrations
+              <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Start Taking Screenshots in Google Sheets</h2>
+          <p class="mt-4 text-red-100 text-lg">Get 100 free screenshots per month. No credit card required to start.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              Get Free API Key
+            </a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              Read Documentation
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/use-cases/" class="text-base text-gray-500 hover:text-gray-900">Use Cases</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

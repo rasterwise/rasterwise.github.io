@@ -11,28 +11,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <title>
-      GetScreenshot - Affordable Screenshot API with Zapier & n8n Integration
+      GetScreenshot - Affordable Screenshot API with Zapier, n8n & Make Integration
     </title>
     <meta
       name="description"
       content="GetScreenshot is a powerful and affordable Screenshot API.
-    Ready for no code projects via Zapier and n8n (Take Screenshots with Zapier or n8n)"
+    Ready for no code projects via Zapier, n8n and Make (Take Screenshots with Zapier, n8n or Make)"
     />
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.getscreenshotapi.com/" />
     <meta
       property="og:title"
-      content="GetScreenshot - Affordable Screenshot API with Zapier & n8n Integration"
+      content="GetScreenshot - Affordable Screenshot API with Zapier, n8n & Make Integration"
     />
     <meta
       property="og:description"
-      content="GetScreenshot is an affordable and highly scalable screenshot API service with Zapier and n8n Integrations. Ready for No Coders."
+      content="GetScreenshot is an affordable and highly scalable screenshot API service with Zapier, n8n and Make Integrations. Ready for No Coders."
     />
     <meta
       property="og:image"
       content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png"
     />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.getscreenshotapi.com/" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
@@ -43,7 +46,7 @@
     />
     <meta
       property="twitter:description"
-      content="GetScreenshot is an affordable and highly scalable screenshot API service with Zapier and n8n Integrations. Ready for No Coders."
+      content="GetScreenshot is an affordable and highly scalable screenshot API service with Zapier, n8n and Make Integrations. Ready for No Coders."
     />
     <meta
       property="twitter:image"
@@ -132,6 +135,31 @@
     />
     <link href="images/webclip-gallio.png" rel="apple-touch-icon" />
     <script src="/js/italianBlocker.js"></script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GetScreenshot",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "description": "Affordable and powerful screenshot API with Zapier, n8n and Make integrations. Capture website screenshots programmatically.",
+      "url": "https://www.getscreenshotapi.com",
+      "offers": {
+        "@type": "AggregateOffer",
+        "lowPrice": "5.00",
+        "highPrice": "20.00",
+        "priceCurrency": "USD",
+        "offerCount": "3"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "Rasterwise",
+        "url": "https://www.rasterwise.com"
+      }
+    }
+    </script>
   </head>
 
   <body class="bg-gray-50">
@@ -150,11 +178,11 @@
 
             <!-- Desktop Navigation - centered, hidden on mobile -->
             <nav class="hidden lg:flex items-center space-x-8">
-              <a href="#features" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+              <a href="/features/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+              <a href="/integrations/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Integrations</a>
               <a href="#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
               <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
-              <a href="#faq" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">FAQ</a>
-              <a href="https://blog.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Blog</a>
+              <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
             </nav>
 
             <!-- Right side - never shrinks -->
@@ -193,11 +221,11 @@
         <!-- Mobile menu panel -->
         <div class="hidden" id="mobile-menu">
           <div class="px-4 pt-2 pb-4 space-y-1 bg-white border-t border-gray-200 shadow-lg">
-            <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Features</a>
+            <a href="/features/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Features</a>
+            <a href="/integrations/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Integrations</a>
             <a href="#pricing" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Pricing</a>
             <a href="https://docs.rasterwise.com" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Docs</a>
-            <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">FAQ</a>
-            <a href="https://blog.rasterwise.com" target="_blank" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Blog</a>
+            <a href="/compare/" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Compare</a>
             <a href="#pricing" class="block px-3 py-2 mt-2 rounded-md text-base font-medium text-center text-white btn-primary">Get API Key</a>
           </div>
         </div>
@@ -773,6 +801,34 @@
               workflow automation tool. Build powerful automations with our community node.
             </dd>
           </div>
+
+          <div class="relative">
+            <dt>
+              <!-- Heroicon name: outline/check -->
+              <svg
+                class="absolute h-6 w-6 text-green-500"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+              <p class="ml-9 text-lg leading-6 font-medium text-gray-900">
+                Make Integration
+              </p>
+            </dt>
+            <dd class="mt-2 ml-9 text-base text-gray-500">
+              GetScreenshot integrates with Make.com (formerly Integromat) for powerful
+              visual workflow automation with 6 dedicated screenshot modules.
+            </dd>
+          </div>
         </dl>
       </div>
     </div>
@@ -832,7 +888,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -858,7 +914,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -878,7 +934,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -900,7 +956,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -935,7 +991,7 @@
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
-                <span class="ml-3 text-gray-500"> No Zapier or n8n Integration </span>
+                <span class="ml-3 text-gray-500"> No Zapier, n8n, or Make Integration </span>
               </li>
             </ul>
           </div>
@@ -983,7 +1039,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1009,7 +1065,7 @@
               <li class="flex items-center">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1037,7 +1093,7 @@
               <li class="flex items-center">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1062,10 +1118,38 @@
                 </span>
               </li>
 
+              <li class="flex items-center">
+                <!-- Heroicon name: outline/check -->
+                <svg
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span class="ml-3 text-gray-500">Integrates with</span>
+                <span>
+                  <img
+                    class="h-8 ml-2 mb-1"
+                    src="images/make.png"
+                    loading="lazy"
+                    alt="Make"
+                  />
+                </span>
+              </li>
+
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1085,7 +1169,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1107,7 +1191,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1163,7 +1247,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1189,7 +1273,7 @@
               <li class="flex items-center">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1216,7 +1300,7 @@
               <li class="flex items-center">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1240,10 +1324,37 @@
                 </span>
               </li>
 
+              <li class="flex items-center">
+                <!-- Heroicon name: outline/check -->
+                <svg
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+                <span class="ml-3 text-gray-500">Integrates with</span>
+                <span>
+                  <img
+                    class="h-8 ml-2 mb-1"
+                    src="images/make.png"
+                    alt="Make"
+                  />
+                </span>
+              </li>
+
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1263,7 +1374,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1285,7 +1396,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1307,7 +1418,7 @@
               <li class="flex">
                 <!-- Heroicon name: outline/check -->
                 <svg
-                  class="flex-shrink-0 w-6 h-6 text-red-500"
+                  class="flex-shrink-0 w-6 h-6 text-green-500"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -1434,13 +1545,22 @@
       </div>
     </div>
 
-    <!-- This example requires Tailwind CSS v2.0+ -->
+    <!-- Footer -->
     <footer class="bg-gray-50">
       <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
         <nav
           class="-mx-5 -my-2 flex flex-wrap justify-center"
           aria-label="Footer"
         >
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
           <div class="px-5 py-2">
             <a
               href="https://www.rasterwise.com"
@@ -1450,7 +1570,6 @@
               About Rasterwise
             </a>
           </div>
-
           <div class="px-5 py-2">
             <a
               href="https://blog.rasterwise.com"
@@ -1459,7 +1578,6 @@
               Blog
             </a>
           </div>
-
           <div class="px-5 py-2">
             <a
               href="https://www.rasterwise.com/privacy"
@@ -1469,7 +1587,6 @@
               Privacy Policy
             </a>
           </div>
-
           <div class="px-5 py-2">
             <a
               href="mailto:support@rasterwise.com"

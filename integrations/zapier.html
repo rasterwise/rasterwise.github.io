@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Zapier Screenshot Integration - Take Screenshots in Zapier | GetScreenshot</title>
+    <meta name="description" content="Take website screenshots in Zapier with GetScreenshot. Automate screenshot capture in your Zaps. Connect with 5,000+ apps. No coding required. Screenshot Zapier integration." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/integrations/zapier.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/integrations/zapier.html" />
+    <meta property="og:title" content="Zapier Screenshot Integration - GetScreenshot" />
+    <meta property="og:description" content="Take website screenshots in Zapier. Automate screenshot capture with 5,000+ app integrations." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/integrations/zapier.html" />
+    <meta property="twitter:title" content="Zapier Screenshot Integration - GetScreenshot" />
+    <meta property="twitter:description" content="Take website screenshots in Zapier with GetScreenshot." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .btn-zapier {
+        background: #ff4a00;
+        transition: all 0.2s ease;
+      }
+      .btn-zapier:hover {
+        background: #e04400;
+        transform: translateY(-1px);
+      }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Take Screenshots in Zapier",
+      "description": "Learn how to automate website screenshots using GetScreenshot's Zapier integration.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "Get your API key",
+          "text": "Sign up for GetScreenshot Hamilton or Jackson plan to get your API key with Zapier access."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Add GetScreenshot to your Zap",
+          "text": "Search for GetScreenshot in Zapier and add it as an action step in your Zap."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Configure the screenshot",
+          "text": "Enter the URL to capture and configure options like viewport size, full page, and format."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "Use the screenshot",
+          "text": "The screenshot URL is returned and can be used in subsequent Zap steps."
+        }
+      ]
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-red-600 transition-colors duration-200">Integrations</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="/integrations/" class="text-gray-500 hover:text-gray-700">Integrations</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">Zapier</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <div class="flex justify-center items-center gap-4 mb-6">
+            <img src="../images/gs-logo.svg" alt="GetScreenshot" class="h-10" />
+            <span class="text-3xl text-gray-300">+</span>
+            <img src="../images/zapier.svg" alt="Zapier" class="h-10" />
+          </div>
+          <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Take Screenshots with Zapier
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            Automate website screenshots in your Zapier workflows. Capture any URL and connect with 5,000+ apps - no coding required.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="btn-primary px-8 py-3 rounded-md text-white font-medium text-lg">
+              Get Started - $10/mo
+            </a>
+            <a href="https://zapier.com/apps/getscreenshot/integrations" target="_blank" class="btn-zapier px-8 py-3 rounded-md text-white font-medium text-lg">
+              View on Zapier
+            </a>
+          </div>
+          <p class="mt-4 text-sm text-gray-500">
+            Zapier integration available on Hamilton ($10/mo) and Jackson ($20/mo) plans
+          </p>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">How to Set Up</h2>
+            <p class="mt-4 text-lg text-gray-500">Get screenshot automation running in minutes</p>
+          </div>
+
+          <div class="space-y-8">
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                1
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Get Your API Key</h3>
+                <p class="text-gray-500 mb-4">
+                  Sign up for a GetScreenshot Hamilton or Jackson plan. After subscribing, you'll receive an API key via email that includes Zapier access.
+                </p>
+                <a href="/#pricing" class="inline-flex items-center text-red-600 font-medium hover:text-red-700">
+                  View pricing plans
+                  <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                2
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Create a Zap with GetScreenshot</h3>
+                <p class="text-gray-500 mb-4">
+                  In Zapier, create a new Zap and search for "GetScreenshot" when adding an action. Connect your account using your API key.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                3
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Configure Screenshot Options</h3>
+                <p class="text-gray-500 mb-4">
+                  Enter the URL you want to capture (this can come from a trigger or previous step). Configure options like viewport size, full page capture, PDF format, and more.
+                </p>
+                <div class="bg-white rounded-lg p-4 border border-gray-200">
+                  <h4 class="font-medium text-gray-900 mb-2">Available Options in Zapier:</h4>
+                  <ul class="grid md:grid-cols-2 gap-2 text-sm text-gray-600">
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      URL to screenshot
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Viewport width & height
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Full page capture
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      PDF output
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Hide chat widgets
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Send to email
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-6 items-start">
+              <div class="flex-shrink-0 w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
+                4
+              </div>
+              <div class="flex-1 pt-2">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">Use the Screenshot in Subsequent Steps</h3>
+                <p class="text-gray-500 mb-4">
+                  GetScreenshot returns a screenshot URL that you can use in the next steps of your Zap. Save to Google Drive, post to Slack, add to a database, send via email, and more.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Popular Zaps -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Popular Zapier Workflows</h2>
+            <p class="mt-4 text-lg text-gray-500">Ideas to get you started with screenshot automation</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Schedule trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Daily Website Screenshots</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Schedule daily screenshots of competitor websites or your own pages. Save to Google Drive or Dropbox for visual tracking.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Schedule</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Google Drive</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Google Sheets trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Screenshot URLs from Spreadsheet</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                When new URLs are added to a Google Sheet, automatically capture screenshots and add the image URLs back to the sheet.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Google Sheets</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Google Sheets</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Slack trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Screenshot on Slack Command</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Post a URL in a Slack channel and automatically get a screenshot posted back. Great for quick website previews.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Slack</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Slack</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Email trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Email Reports with Screenshots</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                Screenshot dashboard URLs and send formatted email reports with the images attached to stakeholders.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Schedule</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Gmail</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Airtable trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Portfolio Screenshot Database</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                When new projects are added to Airtable, capture screenshots and attach them to the record automatically.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Airtable</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Airtable</span>
+              </div>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <div class="flex items-center gap-2 mb-4">
+                <svg class="w-6 h-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span class="text-sm font-medium text-gray-500">Webhook trigger</span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">Invoice PDF Archiving</h3>
+              <p class="text-gray-500 text-sm mb-4">
+                When invoices are created in your system, capture the invoice page as PDF and archive to cloud storage.
+              </p>
+              <div class="flex items-center gap-2 text-sm text-gray-400">
+                <span>Webhook</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>GetScreenshot</span>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+                <span>Dropbox</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Callout -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">All Features Available in Zapier</h2>
+            <p class="mt-4 text-lg text-gray-500">Full access to GetScreenshot capabilities from your Zaps</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="/features/full-page-screenshots.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Full Page Capture</h3>
+              <p class="mt-2 text-sm text-gray-500">Screenshot entire pages from top to bottom.</p>
+            </a>
+
+            <a href="/features/pdf-generation.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">PDF Generation</h3>
+              <p class="mt-2 text-sm text-gray-500">Convert webpages to PDF documents.</p>
+            </a>
+
+            <a href="/features/viewport-control.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Custom Viewports</h3>
+              <p class="mt-2 text-sm text-gray-500">Set width, height, and device scale.</p>
+            </a>
+
+            <a href="/features/hide-chat-widgets.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Hide Widgets</h3>
+              <p class="mt-2 text-sm text-gray-500">Remove chat widgets and popups.</p>
+            </a>
+          </div>
+
+          <div class="mt-8 text-center">
+            <a href="/features/" class="inline-flex items-center text-red-600 font-medium hover:text-red-700">
+              View all features
+              <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Ready to Automate Screenshots with Zapier?</h2>
+          <p class="mt-4 text-red-100 text-lg">Get started with the Hamilton plan for $10/month. Includes 6,000 screenshots and full Zapier access.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              Get API Key - $10/mo
+            </a>
+            <a href="https://zapier.com/apps/getscreenshot/integrations" target="_blank" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              View on Zapier
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

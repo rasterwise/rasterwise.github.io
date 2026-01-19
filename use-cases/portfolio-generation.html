@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Portfolio Screenshot Generation - Auto-Capture Client Work | GetScreenshot</title>
+    <meta name="description" content="Automate portfolio screenshot generation with GetScreenshot. Capture client websites, generate case study images, and keep your portfolio updated automatically." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/use-cases/portfolio-generation.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/use-cases/portfolio-generation.html" />
+    <meta property="og:title" content="Portfolio Screenshot Generation - GetScreenshot" />
+    <meta property="og:description" content="Automate portfolio image capture for agencies and freelancers with GetScreenshot's API." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/use-cases/portfolio-generation.html" />
+    <meta property="twitter:title" content="Portfolio Screenshot Generation - GetScreenshot" />
+    <meta property="twitter:description" content="Automate portfolio image capture with GetScreenshot." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .code-block {
+        background: #1f2937;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      .code-block code {
+        color: #e5e7eb;
+        font-family: 'Monaco', 'Menlo', monospace;
+        font-size: 14px;
+      }
+      .code-block .param { color: #fbbf24; }
+      .code-block .value { color: #34d399; }
+      .code-block .base { color: #93c5fd; }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Portfolio Screenshot Generation",
+      "description": "Learn how to automate portfolio image capture using GetScreenshot's API for agencies and freelancers.",
+      "author": {
+        "@type": "Organization",
+        "name": "GetScreenshot"
+      }
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Integrations</a>
+            <a href="/use-cases/" class="text-base font-medium text-red-600 transition-colors duration-200">Use Cases</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="/use-cases/" class="text-gray-500 hover:text-gray-700">Use Cases</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">Portfolio Generation</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700 uppercase tracking-wide">
+            Use Case
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Portfolio Screenshot Generation
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            Automatically capture client websites and projects for your portfolio. Keep case study images fresh and showcase your work with consistent, high-quality screenshots.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="btn-primary px-8 py-3 rounded-md text-white font-medium text-lg">
+              Get Started - From $5/mo
+            </a>
+            <a href="/#live-demo" class="btn-secondary px-8 py-3 rounded-md font-medium border-2 border-gray-600 text-lg">
+              Try Live Demo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Problem/Solution Section -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="lg:grid lg:grid-cols-2 lg:gap-12">
+            <div class="bg-white rounded-xl p-8 shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-900">The Challenge</h2>
+              <p class="mt-4 text-gray-500">
+                Agencies and freelancers need updated portfolio images that reflect current client work. Manually capturing screenshots of every project is tedious, and portfolios quickly become stale as client sites evolve.
+              </p>
+              <ul class="mt-4 space-y-2 text-gray-500">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-red-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                  </svg>
+                  Portfolio images become outdated quickly
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-red-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                  </svg>
+                  Inconsistent screenshot quality and sizing
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-red-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                  </svg>
+                  Time-consuming manual capture process
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-8 lg:mt-0 bg-white rounded-xl p-8 shadow-soft">
+              <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-900">The Solution</h2>
+              <p class="mt-4 text-gray-500">
+                GetScreenshot automates portfolio image capture. Set up scheduled screenshots of client sites, generate device mockups, and ensure your portfolio always shows current work with zero manual effort.
+              </p>
+              <ul class="mt-4 space-y-2 text-gray-500">
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  Schedule automatic portfolio refreshes
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  Capture desktop, tablet, and mobile views
+                </li>
+                <li class="flex items-start">
+                  <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  High-resolution retina-ready images
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common Workflows -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Popular Portfolio Workflows</h2>
+            <p class="mt-4 text-lg text-gray-500">Automate these common tasks with GetScreenshot</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Multi-Device Showcases</h3>
+              <p class="text-gray-500">Capture each project at desktop, tablet, and mobile viewports to demonstrate responsive design work.</p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Full Page Case Studies</h3>
+              <p class="text-gray-500">Generate full-page screenshots showing the complete design from hero section to footer for case study presentations.</p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Scheduled Freshness Checks</h3>
+              <p class="text-gray-500">Set up weekly or monthly captures to ensure your portfolio reflects current client site designs.</p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Proposal Mockups</h3>
+              <p class="text-gray-500">Capture competitor sites or inspiration examples to include in project proposals and pitches.</p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Before/After Documentation</h3>
+              <p class="text-gray-500">Archive "before" screenshots of redesign projects to showcase transformation in case studies.</p>
+            </div>
+
+            <div class="p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Client Deliverable PDFs</h3>
+              <p class="text-gray-500">Generate PDF versions of completed pages to include in project handoff documentation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Example Workflow -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Example: Multi-Device Portfolio Capture</h2>
+            <p class="mt-4 text-lg text-gray-500">Capture desktop, tablet, and mobile views in one workflow</p>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-soft-lg p-8">
+            <p class="text-gray-500 mb-6">Use different viewport sizes to capture responsive versions of each project:</p>
+
+            <div class="space-y-4">
+              <div>
+                <p class="text-sm font-medium text-gray-700 mb-2">Desktop (1920x1080)</p>
+                <div class="code-block p-4">
+                  <code>
+                    <span class="param">width</span>=<span class="value">1920</span>&<span class="param">height</span>=<span class="value">1080</span>&<span class="param">deviceScaleFactor</span>=<span class="value">2</span>
+                  </code>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-sm font-medium text-gray-700 mb-2">Tablet (768x1024)</p>
+                <div class="code-block p-4">
+                  <code>
+                    <span class="param">width</span>=<span class="value">768</span>&<span class="param">height</span>=<span class="value">1024</span>&<span class="param">deviceScaleFactor</span>=<span class="value">2</span>
+                  </code>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-sm font-medium text-gray-700 mb-2">Mobile (390x844)</p>
+                <div class="code-block p-4">
+                  <code>
+                    <span class="param">width</span>=<span class="value">390</span>&<span class="param">height</span>=<span class="value">844</span>&<span class="param">deviceScaleFactor</span>=<span class="value">3</span>
+                  </code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recommended Features -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Recommended Features for Portfolios</h2>
+            <p class="mt-4 text-lg text-gray-500">GetScreenshot features perfect for portfolio generation</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="/features/full-page-screenshots.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Full Page Capture</h3>
+              <p class="mt-2 text-sm text-gray-500">Show complete designs from top to bottom.</p>
+            </a>
+
+            <a href="/features/viewport-control.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Viewport Control</h3>
+              <p class="mt-2 text-sm text-gray-500">Capture at any device size for responsive showcases.</p>
+            </a>
+
+            <a href="/features/pdf-generation.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">PDF Generation</h3>
+              <p class="mt-2 text-sm text-gray-500">Create PDF deliverables for client handoffs.</p>
+            </a>
+
+            <a href="/features/hide-chat-widgets.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Hide Chat Widgets</h3>
+              <p class="mt-2 text-sm text-gray-500">Remove distracting popups for clean portfolio shots.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Integration Section -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Best Integrations for Portfolio Automation</h2>
+            <p class="mt-4 text-lg text-gray-500">Connect GetScreenshot to your project management tools</p>
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-8">
+            <a href="/integrations/zapier.html" class="flex items-center gap-3 px-6 py-4 bg-white rounded-lg shadow-soft hover:shadow-soft-lg transition-all">
+              <img src="../images/zapier.svg" alt="Zapier" class="h-8" />
+              <div>
+                <span class="font-medium text-gray-900">Zapier</span>
+                <p class="text-sm text-gray-500">Connect to Notion, Airtable & more</p>
+              </div>
+            </a>
+
+            <a href="/integrations/n8n.html" class="flex items-center gap-3 px-6 py-4 bg-white rounded-lg shadow-soft hover:shadow-soft-lg transition-all">
+              <img src="../images/n8n-logo.png" alt="n8n" class="h-10" />
+              <div>
+                <span class="font-medium text-gray-900">n8n</span>
+                <p class="text-sm text-gray-500">Build scheduled capture workflows</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Ready to Automate Your Portfolio?</h2>
+          <p class="mt-4 text-red-100 text-lg">Keep your portfolio fresh with automated screenshot capture.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              View Pricing
+            </a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              Read Documentation
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/use-cases/" class="text-base text-gray-500 hover:text-gray-900">Use Cases</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Custom CSS & JavaScript Injection API - Modify Screenshots | GetScreenshot</title>
+    <meta name="description" content="Inject custom CSS and JavaScript into web pages before capturing screenshots. Hide elements, change styles, or execute scripts with GetScreenshot's API." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/features/custom-css-javascript.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/features/custom-css-javascript.html" />
+    <meta property="og:title" content="Custom CSS & JavaScript Injection - GetScreenshot API" />
+    <meta property="og:description" content="Inject custom CSS and JavaScript into web pages before capturing screenshots. Modify any page to get the perfect screenshot." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/features/custom-css-javascript.html" />
+    <meta property="twitter:title" content="Custom CSS & JavaScript Injection - GetScreenshot API" />
+    <meta property="twitter:description" content="Inject custom CSS and JavaScript to modify web pages before screenshot capture." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .code-block {
+        background: #1f2937;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      .code-block code {
+        color: #e5e7eb;
+        font-family: 'Monaco', 'Menlo', monospace;
+        font-size: 14px;
+      }
+      .code-block .param { color: #fbbf24; }
+      .code-block .value { color: #34d399; }
+      .code-block .base { color: #93c5fd; }
+      .code-block .comment { color: #6b7280; }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Custom CSS & JavaScript Injection API",
+      "description": "Learn how to inject custom CSS and JavaScript into web pages using GetScreenshot's API for modified screenshots.",
+      "author": {
+        "@type": "Organization",
+        "name": "GetScreenshot"
+      }
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-red-600 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Integrations</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="/features/" class="text-gray-500 hover:text-gray-700">Features</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">Custom CSS & JavaScript</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="py-16 lg:py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700 uppercase tracking-wide">
+            Feature
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold text-gray-900 sm:text-5xl tracking-tight">
+            Custom CSS & JavaScript Injection
+          </h1>
+          <p class="mt-4 text-xl text-gray-500 max-w-2xl mx-auto">
+            Inject custom CSS rules and JavaScript code to modify any webpage before capturing. Hide elements, change colors, add branding, or execute custom logic.
+          </p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="btn-primary px-8 py-3 rounded-md text-white font-medium text-lg">
+              Get Started - From $5/mo
+            </a>
+            <a href="/#live-demo" class="btn-secondary px-8 py-3 rounded-md font-medium border-2 border-gray-600 text-lg">
+              Try Live Demo
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- How CSS Injection Works -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-start">
+            <div>
+              <h2 class="text-3xl font-bold text-gray-900">Custom CSS Injection</h2>
+              <p class="mt-4 text-lg text-gray-500">
+                The <code class="bg-gray-200 px-2 py-1 rounded text-red-600">css</code> parameter allows you to inject any valid CSS rules into the page before the screenshot is taken. This is perfect for hiding unwanted elements, changing colors, or customizing the appearance.
+              </p>
+              <p class="mt-4 text-lg text-gray-500">
+                Your CSS is injected after all page styles load, giving your rules the highest specificity. Use <code class="bg-gray-200 px-1 rounded">!important</code> if needed to override stubborn styles.
+              </p>
+
+              <div class="mt-8 bg-white rounded-lg p-6 border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">API Parameter</h3>
+                <div class="code-block p-4">
+                  <code><span class="param">css</span>=<span class="value">{url-encoded CSS}</span></code>
+                </div>
+                <p class="mt-4 text-gray-600">
+                  Pass your CSS rules as a URL-encoded string. The CSS will be injected into a <code class="bg-gray-100 px-1 rounded">&lt;style&gt;</code> tag on the page.
+                </p>
+              </div>
+            </div>
+
+            <div class="mt-10 lg:mt-0">
+              <div class="bg-white rounded-xl shadow-soft-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">CSS Example: Hide Header & Footer</h3>
+                <div class="code-block p-4">
+                  <code>
+                    <span class="comment">/* Original CSS */</span><br>
+                    header, footer, .popup-modal {<br>
+                    &nbsp;&nbsp;display: none !important;<br>
+                    }<br><br>
+                    <span class="comment">/* URL encoded in API call */</span><br>
+                    <span class="base">https://api.rasterwise.com/v1/get-screenshot</span><br>
+                    &nbsp;&nbsp;?<span class="param">apikey</span>=<span class="value">YOUR_API_KEY</span><br>
+                    &nbsp;&nbsp;&<span class="param">url</span>=<span class="value">https://example.com</span><br>
+                    &nbsp;&nbsp;&<span class="param">css</span>=<span class="value">header%2C%20footer%2C%20...</span>
+                  </code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How JavaScript Injection Works -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-start">
+            <div class="order-2 lg:order-1 mt-10 lg:mt-0">
+              <div class="bg-white rounded-xl shadow-soft-lg p-6 border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">JavaScript Example: Click Button & Wait</h3>
+                <div class="code-block p-4">
+                  <code>
+                    <span class="comment">// Original JavaScript</span><br>
+                    document.querySelector('.accept-cookies').click();<br>
+                    document.querySelector('.expand-all').click();<br><br>
+                    <span class="comment">// URL encoded in API call</span><br>
+                    <span class="base">https://api.rasterwise.com/v1/get-screenshot</span><br>
+                    &nbsp;&nbsp;?<span class="param">apikey</span>=<span class="value">YOUR_API_KEY</span><br>
+                    &nbsp;&nbsp;&<span class="param">url</span>=<span class="value">https://example.com</span><br>
+                    &nbsp;&nbsp;&<span class="param">js</span>=<span class="value">document.querySelector...</span><br>
+                    &nbsp;&nbsp;&<span class="param">delay</span>=<span class="value">2000</span>
+                  </code>
+                </div>
+              </div>
+            </div>
+
+            <div class="order-1 lg:order-2">
+              <h2 class="text-3xl font-bold text-gray-900">JavaScript Injection</h2>
+              <p class="mt-4 text-lg text-gray-500">
+                The <code class="bg-gray-200 px-2 py-1 rounded text-red-600">js</code> parameter lets you execute custom JavaScript on the page before capture. This enables dynamic interactions like clicking buttons, expanding accordions, or modifying content.
+              </p>
+              <p class="mt-4 text-lg text-gray-500">
+                Combine with the <code class="bg-gray-200 px-1 rounded">delay</code> parameter to give your script time to execute and the page time to update before the screenshot is taken.
+              </p>
+
+              <div class="mt-8 bg-white rounded-lg p-6 border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">API Parameter</h3>
+                <div class="code-block p-4">
+                  <code><span class="param">js</span>=<span class="value">{url-encoded JavaScript}</span></code>
+                </div>
+                <p class="mt-4 text-gray-600">
+                  Pass your JavaScript as a URL-encoded string. The script executes in the page context with full DOM access.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common Use Cases -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Common Use Cases</h2>
+            <p class="mt-4 text-lg text-gray-500">Custom CSS and JavaScript enable powerful screenshot customization</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Hide Sensitive Data</h3>
+              <p class="text-gray-500">Use CSS to hide email addresses, phone numbers, or other sensitive information from screenshots.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Custom Branding</h3>
+              <p class="text-gray-500">Change colors, fonts, or add watermarks to screenshots for consistent branding across reports.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Trigger Interactions</h3>
+              <p class="text-gray-500">Use JavaScript to click buttons, expand menus, or close modals before capturing the page.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Dismiss Cookie Banners</h3>
+              <p class="text-gray-500">Automatically click "Accept" buttons on cookie consent dialogs with JavaScript injection.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Remove Distractions</h3>
+              <p class="text-gray-500">Hide navigation bars, sidebars, ads, or any other elements that distract from the main content.</p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-soft">
+              <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <svg class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Modify Content</h3>
+              <p class="text-gray-500">Use JavaScript to change text, update numbers, or populate forms before taking the screenshot.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Features -->
+      <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900">Combine with Other Features</h2>
+            <p class="mt-4 text-lg text-gray-500">CSS and JavaScript injection work seamlessly with other capabilities</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="/features/full-page-screenshots.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Full Page Screenshots</h3>
+              <p class="mt-2 text-sm text-gray-500">Hide sticky headers with CSS before capturing long scrolling pages.</p>
+            </a>
+
+            <a href="/features/element-targeting.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Element Targeting</h3>
+              <p class="mt-2 text-sm text-gray-500">Style specific elements before capturing them in isolation.</p>
+            </a>
+
+            <a href="/features/viewport-control.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Viewport Control</h3>
+              <p class="mt-2 text-sm text-gray-500">Use responsive CSS media queries with custom viewport sizes.</p>
+            </a>
+
+            <a href="/features/webhook-integration.html" class="block p-4 bg-gray-50 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Webhooks</h3>
+              <p class="mt-2 text-sm text-gray-500">Receive modified screenshots via webhook for automated processing.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Ready to Customize Your Screenshots?</h2>
+          <p class="mt-4 text-red-100 text-lg">Get started with GetScreenshot's CSS and JavaScript injection. Available on all plans.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              View Pricing
+            </a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              Read Documentation
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

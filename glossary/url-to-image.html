@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>URL to Image - Convert Web URLs to Images | GetScreenshot</title>
+    <meta name="description" content="Learn how URL to image conversion works. Convert any website URL into a PNG, JPEG, or PDF image programmatically with a screenshot API." />
+    <link rel="canonical" href="https://www.getscreenshotapi.com/glossary/url-to-image.html" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.getscreenshotapi.com/glossary/url-to-image.html" />
+    <meta property="og:title" content="URL to Image - GetScreenshot" />
+    <meta property="og:description" content="Learn how URL to image conversion works." />
+    <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.getscreenshotapi.com/glossary/url-to-image.html" />
+    <meta property="twitter:title" content="URL to Image" />
+    <meta property="twitter:description" content="Convert web URLs to images." />
+    <meta property="twitter:image" content="https://s3-us-west-2.amazonaws.com/www.getscreenshotapi.com/og.png" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+      h1, h2, h3 { font-family: 'DM Sans', 'Inter', sans-serif; }
+      .shadow-soft { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.06); }
+      .shadow-soft-lg { box-shadow: 0 2px 8px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.08); }
+      .btn-primary {
+        background: linear-gradient(180deg, #ef4444 0%, #dc2626 100%);
+        transition: all 0.2s ease;
+      }
+      .btn-primary:hover {
+        background: linear-gradient(180deg, #dc2626 0%, #b91c1c 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 38, 38, 0.35);
+      }
+      .btn-secondary { transition: all 0.2s ease; }
+      .btn-secondary:hover {
+        background-color: #f3f4f6;
+        border-color: #374151;
+        transform: translateY(-1px);
+      }
+      .code-block {
+        background: #1f2937;
+        border-radius: 8px;
+        overflow-x: auto;
+      }
+      .code-block code {
+        color: #e5e7eb;
+        font-family: 'Monaco', 'Menlo', monospace;
+        font-size: 14px;
+      }
+      .code-block .param { color: #fbbf24; }
+      .code-block .value { color: #34d399; }
+      .code-block .base { color: #93c5fd; }
+      a:focus-visible, button:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 2px white, 0 0 0 4px #dc2626;
+        border-radius: 4px;
+      }
+    </style>
+    <link href="../images/webclip-gallio.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="../images/webclip-gallio.png" rel="apple-touch-icon" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "DefinedTerm",
+      "name": "URL to Image",
+      "description": "The process of converting a website URL into an image file (PNG, JPEG, WebP, or PDF) by capturing a screenshot of the rendered web page.",
+      "inDefinedTermSet": {
+        "@type": "DefinedTermSet",
+        "name": "Screenshot API Glossary"
+      }
+    }
+    </script>
+  </head>
+
+  <body class="bg-gray-50">
+    <!-- Header -->
+    <header class="relative bg-white shadow-soft">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16 sm:h-20">
+          <a href="https://www.getscreenshotapi.com" class="flex-shrink-0">
+            <img class="h-6 sm:h-8 w-auto" src="../images/gs-logo.svg" alt="GetScreenshot - Screenshot API" />
+          </a>
+          <nav class="hidden lg:flex items-center space-x-8">
+            <a href="/features/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Features</a>
+            <a href="/integrations/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Integrations</a>
+            <a href="/use-cases/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Use Cases</a>
+            <a href="/#pricing" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Pricing</a>
+            <a href="https://docs.rasterwise.com" target="_blank" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Docs</a>
+            <a href="/compare/" class="text-base font-medium text-gray-500 hover:text-gray-900 transition-colors duration-200">Compare</a>
+          </nav>
+          <div class="flex items-center gap-2 sm:gap-4 flex-shrink-0">
+            <a href="/account" class="inline-flex items-center px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium rounded-md text-gray-700 border-2 border-gray-600 bg-white btn-secondary whitespace-nowrap">
+              Manage Account
+            </a>
+            <a href="/#pricing" class="hidden lg:inline-flex items-center px-4 py-2 text-base font-medium rounded-md text-white btn-primary border-2 border-transparent whitespace-nowrap">
+              Get API Key
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <div class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+          <nav class="flex text-sm">
+            <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="/glossary/" class="text-gray-500 hover:text-gray-700">Glossary</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900">URL to Image</span>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Article Content -->
+      <article class="py-16 bg-white">
+        <div class="max-w-3xl mx-auto px-4">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-700 uppercase tracking-wide">
+            Definition
+          </span>
+          <h1 class="mt-4 text-4xl font-extrabold text-gray-900 tracking-tight">
+            URL to Image
+          </h1>
+
+          <div class="mt-8 prose prose-lg max-w-none">
+            <p class="text-xl text-gray-500 leading-relaxed">
+              <strong>URL to image</strong> refers to the process of converting a website URL into an image file by capturing a screenshot of the rendered web page. This is accomplished using screenshot APIs or headless browsers that load the page and export it as PNG, JPEG, WebP, or PDF.
+            </p>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">How URL to Image Works</h2>
+            <p class="text-gray-600 leading-relaxed">
+              When you convert a URL to an image, a headless browser performs these steps:
+            </p>
+            <ul class="mt-4 space-y-2 text-gray-600">
+              <li>Navigates to the specified URL</li>
+              <li>Renders HTML, CSS, and JavaScript</li>
+              <li>Waits for the page to fully load</li>
+              <li>Captures the viewport or full page as an image</li>
+              <li>Returns the image in your chosen format</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">Output Formats</h2>
+            <p class="text-gray-600 mb-4">URL to image services typically support multiple output formats:</p>
+            <div class="grid grid-cols-2 gap-4 mt-4">
+              <div class="p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-semibold text-gray-900">PNG</h3>
+                <p class="text-sm text-gray-500 mt-1">Lossless compression, supports transparency. Best for UI screenshots.</p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-semibold text-gray-900">JPEG</h3>
+                <p class="text-sm text-gray-500 mt-1">Lossy compression, smaller files. Good for photos and general use.</p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-semibold text-gray-900">WebP</h3>
+                <p class="text-sm text-gray-500 mt-1">Modern format with superior compression. Ideal for web use.</p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg">
+                <h3 class="font-semibold text-gray-900">PDF</h3>
+                <p class="text-sm text-gray-500 mt-1">Document format, great for archival and printing.</p>
+              </div>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">Example API Call</h2>
+            <p class="text-gray-600 mb-4">Converting a URL to image with GetScreenshot:</p>
+            <div class="code-block p-4">
+              <code>
+                <span class="base">https://api.getscreenshotapi.com/</span><br>
+                <span class="param">?apikey</span>=<span class="value">YOUR_API_KEY</span><br>
+                <span class="param">&url</span>=<span class="value">https://example.com</span><br>
+                <span class="param">&output</span>=<span class="value">image</span>
+              </code>
+            </div>
+
+            <h2 class="text-2xl font-bold text-gray-900 mt-12 mb-4">Common Use Cases</h2>
+            <ul class="mt-4 space-y-3 text-gray-600">
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Social sharing:</strong> Generate Open Graph images for link previews</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Link galleries:</strong> Display website previews in directories</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Documentation:</strong> Include website visuals in reports</span>
+              </li>
+              <li class="flex items-start">
+                <svg class="w-5 h-5 text-green-500 mr-2 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span><strong>Archival:</strong> Preserve webpage appearances over time</span>
+              </li>
+            </ul>
+
+            <div class="mt-12 p-6 bg-gray-50 rounded-xl">
+              <h3 class="text-xl font-bold text-gray-900 mb-4">URL to Image with GetScreenshot</h3>
+              <p class="text-gray-600 mb-4">
+                GetScreenshot converts any URL to an image with a simple API call. Supports PNG, JPEG, WebP, and PDF output with options for custom viewports, full-page capture, and more.
+              </p>
+              <a href="/#pricing" class="inline-flex items-center text-red-600 font-medium hover:text-red-700">
+                Try GetScreenshot
+                <svg class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Terms -->
+      <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+          <h2 class="text-2xl font-bold text-gray-900 mb-8">Related Terms</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="/glossary/what-is-screenshot-api.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">What is a Screenshot API?</h3>
+              <p class="mt-2 text-sm text-gray-500">Introduction to screenshot APIs.</p>
+            </a>
+            <a href="/glossary/website-thumbnail-generator.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Website Thumbnail Generator</h3>
+              <p class="mt-2 text-sm text-gray-500">Generate preview thumbnails of websites.</p>
+            </a>
+            <a href="/glossary/webpage-capture-service.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Webpage Capture Service</h3>
+              <p class="mt-2 text-sm text-gray-500">Services for capturing web pages.</p>
+            </a>
+            <a href="/glossary/headless-browser-screenshot.html" class="block p-4 bg-white rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-soft transition-all">
+              <h3 class="font-semibold text-gray-900">Headless Browser Screenshot</h3>
+              <p class="mt-2 text-sm text-gray-500">How headless browsers enable screenshots.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="py-16 bg-red-600">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+          <h2 class="text-3xl font-bold text-white">Convert URLs to Images Today</h2>
+          <p class="mt-4 text-red-100 text-lg">Get started with GetScreenshot's URL to image API.</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/#pricing" class="inline-block bg-white text-red-600 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+              View Pricing
+            </a>
+            <a href="/#live-demo" class="inline-block border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors">
+              Try Live Demo
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50">
+      <div class="max-w-7xl mx-auto py-12 px-4 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="-mx-5 -my-2 flex flex-wrap justify-center" aria-label="Footer">
+          <div class="px-5 py-2">
+            <a href="/" class="text-base text-gray-500 hover:text-gray-900">Home</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/features/" class="text-base text-gray-500 hover:text-gray-900">Features</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/integrations/" class="text-base text-gray-500 hover:text-gray-900">Integrations</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/use-cases/" class="text-base text-gray-500 hover:text-gray-900">Use Cases</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="/compare/" class="text-base text-gray-500 hover:text-gray-900">Compare</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://blog.rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Blog</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="https://www.rasterwise.com/privacy" target="_blank" class="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a>
+          </div>
+          <div class="px-5 py-2">
+            <a href="mailto:support@rasterwise.com" class="text-base text-gray-500 hover:text-gray-900">Contact Support</a>
+          </div>
+        </nav>
+        <p class="mt-8 text-center text-base text-gray-400">
+          &copy; 2026 Rasterwise, LLC. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
